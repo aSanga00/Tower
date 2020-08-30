@@ -53,8 +53,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
+    <Compile Include="Assets\Scripts\GameMain\Battle\Unit\BaseParameter.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\Scripts\GameMain\Battle\Chara\BaseAvator.cs" />
+    <Compile Include="Assets\Scripts\GameMain\Battle\Unit\BaseAvator.cs" />
+    <Compile Include="Assets\Scripts\GameMain\Battle\Controller\BattleController.cs" />
+    <Compile Include="Assets\Scripts\GameMain\Battle\Controller\UnitManager.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Assestore\BrokenVector\LowPolyTreePack\README.txt" />
