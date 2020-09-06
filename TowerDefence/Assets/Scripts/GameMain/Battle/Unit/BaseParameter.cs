@@ -9,6 +9,7 @@ namespace Battle.Unit
     {
         [SerializeField] public int id;
         [SerializeField] public string name;
+        [SerializeField] public string modelName;
         [SerializeField] public int hp;
         [SerializeField] public int cost;
         [SerializeField] public int attack;
