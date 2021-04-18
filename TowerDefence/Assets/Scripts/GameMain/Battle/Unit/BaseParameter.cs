@@ -8,7 +8,7 @@ namespace Battle.Unit
     public class BaseParameter : ScriptableObject
     {
         [SerializeField] public int id;
-        [SerializeField] public string name;
+        [SerializeField] public string unitName;
         [SerializeField] public string modelName;
         [SerializeField] public int hp;
         [SerializeField] public int cost;
@@ -23,7 +23,7 @@ namespace Battle.Unit
         public BaseParameter()
         {
             id = 0;
-            name = string.Empty;
+            unitName = string.Empty;
             hp = 100;
             cost = 10;
             attack = 10;
