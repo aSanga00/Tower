@@ -1,0 +1,136 @@
+Using pre-set license
+Built from '2021.1/staging' branch; Version is '2021.1.2f1 (e5d502d80fbb) revision 15062274'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Pro; OS build 19041.985; Version 2004; 64bit' Language: 'ja' Physical Memory: 16185 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2021.1.2f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+D:/UnityProjects/Tower/TowerDefence
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+51944
+Successfully changed project path to: D:/UnityProjects/Tower/TowerDefence
+D:/UnityProjects/Tower/TowerDefence
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 102.59 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.1.2f1 (e5d502d80fbb)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.1.2f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/UnityProjects/Tower/TowerDefence/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1660 Ti with Max-Q Design (ID=0x2191)
+    Vendor:   NVIDIA
+    VRAM:     5991 MB
+    Driver:   27.21.14.6230
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.1.2f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.1.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.1.2f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56000
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.1.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001862 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 50.62 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.685 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.001162 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 52.98 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.028 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 0.43 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2496 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 133.6 MB.
+System memory in use after: 133.8 MB.
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 2963.
+Total: 3.012200 ms (FindLiveObjects: 0.787900 ms CreateObjectMapping: 0.195600 ms MarkObjects: 1.953100 ms  DeleteObjects: 0.073200 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Assestore/Stylizer/Scenes/ApocalypseScenes
+  artifactKey: Guid(7670403405349c94ebf2f2bb65164213) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assestore/Stylizer/Scenes/ApocalypseScenes using Guid(7670403405349c94ebf2f2bb65164213) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29515ca21da213123f5df987b3ba336d') in 0.004268 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.950810 seconds.
+  path: Assets/Assestore/Stylizer/Scenes/ApocalypseScenes/Apocalypse_1.unity
+  artifactKey: Guid(436cf53f4813ff0489aa5ddf599b48d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assestore/Stylizer/Scenes/ApocalypseScenes/Apocalypse_1.unity using Guid(436cf53f4813ff0489aa5ddf599b48d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '43bf90cdc92e824af96b50720bcb3221') in 0.021034 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 47.992177 seconds.
+  path: Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs
+  artifactKey: Guid(1eadd62f6288a4dbbbe44ae134630820) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs using Guid(1eadd62f6288a4dbbbe44ae134630820) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f8efd66491a65d23216768239017bfe') in 0.002441 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.363244 seconds.
+  path: Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Boiler.prefab
+  artifactKey: Guid(60e453c3cc04c414b9297dee5511bc55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Boiler.prefab using Guid(60e453c3cc04c414b9297dee5511bc55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d40d331d0bc147cd83d8ecbae977a5c') in 0.544405 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.713873 seconds.
+  path: Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Box_middle.prefab
+  artifactKey: Guid(c8c0991ee502d6a40a47209fc2fabcf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Box_middle.prefab using Guid(c8c0991ee502d6a40a47209fc2fabcf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8657c9a82287575f14f0be4cb7196885') in 0.020493 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.653635 seconds.
+  path: Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Box_normal.prefab
+  artifactKey: Guid(888389105c1c3384a9661958c8668b38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Box_normal.prefab using Guid(888389105c1c3384a9661958c8668b38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60c2a560e8fe8a8f513df8769953558f') in 0.020185 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.248299 seconds.
+  path: Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/CarRoad_ArchedBridge_A.prefab
+  artifactKey: Guid(3663a17f3d9643841a4eea2dd3fe2cc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/CarRoad_ArchedBridge_A.prefab using Guid(3663a17f3d9643841a4eea2dd3fe2cc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f7cc4787a4dd0f3480eb4c0bf208a8a') in 0.021744 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.832575 seconds.
+  path: Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Chimney.prefab
+  artifactKey: Guid(50452a5c087c46d489c41623e6eac91f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Chimney.prefab using Guid(50452a5c087c46d489c41623e6eac91f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f80995aaf5bd73daaa171fb55807222') in 0.075240 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.691874 seconds.
+  path: Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Clif_1.prefab
+  artifactKey: Guid(bc3e84aaa2ee90145bc410005875cbd7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Clif_1.prefab using Guid(bc3e84aaa2ee90145bc410005875cbd7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1c21389fb9ddca377e34ff5f636a7d1f') in 0.024353 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.728254 seconds.
+  path: Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Electricity.prefab
+  artifactKey: Guid(57ad61a49df289e4d85246b3d71ca268) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Electricity.prefab using Guid(57ad61a49df289e4d85246b3d71ca268) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e40ccdc978a924b008c7babd01f7a9d6') in 0.017626 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 11.031139 seconds.
+  path: Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Tire.prefab
+  artifactKey: Guid(6a6e2d48f9b19eb44acca452c2e7f1f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Tire.prefab using Guid(6a6e2d48f9b19eb44acca452c2e7f1f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4483ef479208f193ef23acc604b93730') in 0.017824 seconds 
