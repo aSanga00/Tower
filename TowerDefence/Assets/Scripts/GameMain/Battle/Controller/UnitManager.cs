@@ -54,7 +54,22 @@ namespace Battle.Controller
         {
             foreach(Unit.BaseAvator unit in unitList)
             {
-                unit.InitializeUnit();
+                unit.InitializeUnit(SearchUnit);
+            }
+        }
+
+        public void SearchUnit(int id)
+        {
+            for (int i = 0; i < unitList.Count; i++)
+            {
+                if(unitList[i].ControlId != id)
+                {
+                    continue;
+                }
+
+                var target = SearchTarget(unitList[i].ControlId, unitList[i].transform, unitList[i].MaxRenge, unitList[i].CurrentUnitType);
+
+                unitList[i].SetMoveTarget(target);
             }
         }
 

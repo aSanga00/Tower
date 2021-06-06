@@ -21,6 +21,7 @@ namespace Battle.Unit
         [SerializeField] protected int attack;
         [SerializeField] protected int defence;
         [SerializeField] protected float speed;
+        [SerializeField] protected int movePoint = 3;
         [SerializeField] protected float attackSpeed;
         [SerializeField] protected float searchRange;
         [SerializeField] protected float attackRange;
@@ -32,8 +33,12 @@ namespace Battle.Unit
 
         private Vector3 homePosition;
         private Vector3 targetPosition;
-        private Action action;
+        private Action presetAction;
+        private Action currentAction;
+        private Action<int> searchAction;
         private Queue<int> targetQueue = new Queue<int>();
+
+        private float currentCoolTime;
 
         public int ControlId {
             get { return controlId; }
@@ -54,11 +59,6 @@ namespace Battle.Unit
         public float MaxRenge
         {
             get { return PrepareRange() ; }
-        }
-
-        private Vector3 GetTargetPosition()
-        {
-            return targetPosition - transform.localPosition;
         }
 
         public void SetupUnitData(BaseParameter parameter)
@@ -101,17 +101,46 @@ namespace Battle.Unit
         }
 
         // Use this for initialization
-        public void InitializeUnit()
+        public void InitializeUnit(Action<int> action)
         {
             targetPosition = target.localPosition;
             homePosition = transform.localPosition;
-            action = Move;
+            presetAction = Move;
+            searchAction = action;
         }
 
+        
         // Update is called once per frame
         public void UpdateAvator()
         {
-            action.Invoke();
+            PresetAction();
+            currentAction?.Invoke();
+
+            UpdateCoolTime();
+
+        }
+
+        private void Update()
+        {
+            
+        }
+
+        private void UpdateCoolTime()
+        {
+            if(actionType == ActionType.wait || actionType == ActionType.attack)
+            {
+                currentCoolTime += Time.deltaTime;
+            }
+
+            if(currentCoolTime >= coolTime)
+            {
+                currentCoolTime = coolTime;
+            }
+        }
+
+        private void ResetCoolTime()
+        {
+            currentCoolTime = 0;
         }
 
         private void MovePosition()
@@ -123,33 +152,71 @@ namespace Battle.Unit
 
         private void Search()
         {
-
+            searchAction?.Invoke(controlId);
         }
 
         protected virtual void Attack()
         {
-            actionType = ActionType.attack;
-            SetAnimator(actionType);
-            SetAnimatorTrigger(actionType);
+
         }
 
         protected virtual void Defeat()
         {
-            actionType = ActionType.defeat;
-            SetAnimator(actionType);
+
         }
 
         protected virtual void Wait()
         {
-            actionType = ActionType.wait;
-            SetAnimator(actionType);
+            if (currentCoolTime >= coolTime)
+            {
+                
+            }
         }
 
         protected virtual void Move()
         {
+            MovePosition();
+        }
+
+        protected virtual void PresetAction()
+        {
+            presetAction?.Invoke();
+        }
+
+
+        protected virtual void PresetAttack()
+        {
+            if (currentCoolTime >= coolTime)
+            {
+                actionType = ActionType.attack;
+                SetAnimator(actionType);
+                SetAnimatorTrigger(actionType);
+                presetAction = null;
+            }
+        }
+
+        protected virtual void PresetDefeat()
+        {
+            actionType = ActionType.defeat;
+            SetAnimator(actionType);
+            presetAction = null;
+        }
+
+        protected virtual void PresetWait()
+        {
+            actionType = ActionType.wait;
+            SetAnimator(actionType);
+            currentAction = Wait;
+            presetAction = null;
+
+        }
+
+        protected virtual void PresetMove()
+        {
             actionType = ActionType.move;
             MovePosition();
             SetAnimator(actionType);
+            presetAction = null;
 
         }
 
