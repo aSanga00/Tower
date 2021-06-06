@@ -4,7 +4,7 @@ Shader "Beffio/Image Effects/Dithering Image Effect"
 {
 	Properties 
 	{
-		_MainTex ("Base (RGB)", 2D) = "white" {}
+		_MainTex ("Base (RGB)", 2D) = "red" {}
 		_PaletteColorCount ("Mixed Color Count", float) = 4
 		_PaletteHeight ("Palette Height", float) = 128
 		_PaletteTex ("Palette", 2D) = "black" {}
@@ -18,7 +18,8 @@ Shader "Beffio/Image Effects/Dithering Image Effect"
 		Tags 
 		{ 
 			"IgnoreProjector"="True" 
-			"RenderType"="Opaque" 
+			"RenderType"="Opaque"
+			"RenderPipeline" = "UniversalPipeline" 
 		}
 		LOD 200
 
@@ -30,6 +31,7 @@ Shader "Beffio/Image Effects/Dithering Image Effect"
 
 		Pass 
 		{
+			Tags { "LightMode" = "SRPDefaultUnlit" } //Alternatively Tags { "LightMode" = "UniversalForward" }
 			CGPROGRAM
 				#pragma vertex vert
 				#pragma fragment frag
@@ -71,6 +73,8 @@ Shader "Beffio/Image Effects/Dithering Image Effect"
 				{
 					fixed4 c = tex2D(_MainTex, i.uv);
 					return fixed4(GetDitherColor(c.rgb, _PatternTex, _PaletteTex, _PaletteHeight, i.ditherPos, _PaletteColorCount, _PatternScale), c.a);
+					//return fixed4(GetDitherColorNoPattern(c.rgb, _PaletteTex, _PaletteHeight, i.ditherPos, _PaletteColorCount), c.a);
+					//return fixed4(GetDitherColorOnlyPattern(c.rgb, _PatternTex, _PaletteTex, _PaletteHeight, i.ditherPos, _PaletteColorCount, _PatternScale), c.a);
 				}
 			ENDCG
 		}

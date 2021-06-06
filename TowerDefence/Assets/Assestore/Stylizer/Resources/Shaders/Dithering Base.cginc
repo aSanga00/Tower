@@ -28,4 +28,23 @@ inline fixed3 GetDitherColor(fixed3 color, sampler2D ditherTex, sampler2D palett
 	return tex2D(paletteTex, float2(u, v)).rgb;
 }
 
+inline fixed3 GetDitherColorNoPattern(fixed3 color, sampler2D paletteTex,
+							 float paletteHeight, float4 ditherPos, float colorCount) 
+{
+	float u = min(floor(color.r * 16), 15) / 16 + clamp(color.b * 16, 0.5, 15.5) / 256;
+	float v = (clamp(color.g * 16, 0.5, 15.5)) / paletteHeight;
+	// Return the new color from the palette texture
+	return tex2D(paletteTex, float2(u, v)).rgb;
+}
+inline fixed3 GetDitherColorOnlyPattern(fixed3 color, sampler2D ditherTex, sampler2D paletteTex,
+							 float paletteHeight, float4 ditherPos, float colorCount, float patternScale) 
+{
+	float ditherValue = 0.99;
+
+	float u = min(floor(color.r * 16), 15) / 16 + clamp(color.b * 16, 0.5, 15.5) / 256;
+	float v = (clamp(color.g * 16, 0.5, 15.5) + floor(ditherValue * colorCount) * 16) / paletteHeight;
+	// Return the new color from the palette texture
+	return tex2D(paletteTex, float2(u, v)).rgb;
+}
+
 #endif // DITHERING_INCLUDED

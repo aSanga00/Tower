@@ -29,6 +29,8 @@
 			"Queue"="Geometry"
 			"RenderType"="Opaque"
 			"IgnoreProjector"="false"
+			"RenderPipeline" = "UniversalPipeline"
+			"LightMode" = "UniversalForward"
 		}
 		LOD 200
 		
@@ -48,6 +50,7 @@
 				color.rgb = GetDitherColor(color.rgb, _PatternTex, _PaletteTex, _PaletteHeight, i.ditherPos, _PaletteColorCount, _PatternScale);
 			}
 		ENDCG
+		
 	}
 	FallBack "Diffuse"
 	CustomEditor "Beffio.Dithering.DiffuseDitheredEditor"

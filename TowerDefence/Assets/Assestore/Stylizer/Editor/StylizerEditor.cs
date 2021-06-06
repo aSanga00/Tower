@@ -66,6 +66,11 @@ namespace Beffio.Dithering
         SerializedProperty g_LuminanceContribution;
         SerializedProperty g_animated;
 
+		//screenshot properties
+		SerializedProperty width;
+		SerializedProperty height;
+		SerializedProperty savePath;
+
 
 		#endregion
 
@@ -92,7 +97,6 @@ namespace Beffio.Dithering
 			_shaderProperty = serObj.FindProperty("_shader");
 			_pixelationProperty = serObj.FindProperty("_pixelScale");
 
-
 			intensityMultiplier = serObj.FindProperty("intensityMultiplier");
             generalIntensity = serObj.FindProperty("generalIntensity");
             blackIntensity = serObj.FindProperty("blackIntensity");
@@ -100,6 +104,10 @@ namespace Beffio.Dithering
             midGrey = serObj.FindProperty("midGrey");
 			
             softness = serObj.FindProperty("softness");
+
+			width = serObj.FindProperty("width");
+			height = serObj.FindProperty("height");
+			savePath = serObj.FindProperty("savePath");
   
 		}
 
@@ -119,6 +127,7 @@ namespace Beffio.Dithering
 			DrawGUIFields();
 
 			serializedObject.ApplyModifiedProperties();
+			serObj.Update();
 
 			if (GUI.changed) EditorUtility.SetDirty(target);
 		}
@@ -127,6 +136,25 @@ namespace Beffio.Dithering
 		{
 
 			EditorGUI.indentLevel = 0;
+
+			//SCREENSHOTTING
+			EditorGUILayout.LabelField("Export image as separate color layers", EditorStyles.label);
+			EditorGUILayout.PropertyField(width, new GUIContent("Width"));
+			EditorGUILayout.PropertyField(height, new GUIContent("Height"));
+
+			Stylizer stylizer = (Stylizer)target;
+			EditorGUILayout.BeginHorizontal();
+			EditorGUILayout.PropertyField(savePath);
+			if(GUILayout.Button("Browse", GUILayout.ExpandWidth(false))) {
+				stylizer.savePath = EditorUtility.SaveFolderPanel("Path to Save Images", stylizer.savePath, Application.dataPath);
+			}
+			EditorGUILayout.EndHorizontal();
+
+			if(GUILayout.Button("Export")) {
+				stylizer.SeparateColorsToPng();
+			}
+			//-------------
+
 			EditorGUILayout.PropertyField(Dither, new GUIContent("Dithering"));
 			EditorGUILayout.LabelField("Adds a dithering effect to the camera", EditorStyles.miniLabel);
 			if(Dither.boolValue) {
@@ -141,6 +169,7 @@ namespace Beffio.Dithering
 				if(Effect.Pattern == null) {
 					EditorGUILayout.PropertyField(_patternTextureProperty, ContentText.patternTextureProperty);
 				}
+				
 			}else{
 				_effect.Dither = Dither.boolValue;
 			}
@@ -180,10 +209,10 @@ namespace Beffio.Dithering
 				EditorGUI.indentLevel = 1;
 				_effect.Grain = Grain.boolValue;
 				
-				EditorGUILayout.PropertyField(Grain_New, new GUIContent("Grain method #1"));
-				if(Grain_New.boolValue){
-					EditorGUI.indentLevel = 2;
-					_effect.Grain_New = Grain_New.boolValue;
+				//EditorGUILayout.PropertyField(Grain_New, new GUIContent("Grain method #1"));
+				//if(Grain_New.boolValue){
+					//EditorGUI.indentLevel = 2;
+					_effect.Grain_New = true;
 
 					//EditorGUILayout.PropertyField(profile);
 
@@ -199,12 +228,12 @@ namespace Beffio.Dithering
 					_effect.colored = g_Colored.boolValue;
 					_effect.animated = g_animated.boolValue;
 
-				}else{
-					_effect.Grain_New = Grain_New.boolValue;
-				}
-				EditorGUI.indentLevel = 1;
+				//}else{
+				//	_effect.Grain_New = Grain_New.boolValue;
+				//}
+				//EditorGUI.indentLevel = 1;
 
-				EditorGUILayout.PropertyField(Grain_Old, new GUIContent("Grain method #2"));
+				/*EditorGUILayout.PropertyField(Grain_Old, new GUIContent("Grain method #2"));
 				if(Grain_Old.boolValue){
 					EditorGUI.indentLevel = 2;
 					_effect.Grain_Old = Grain_Old.boolValue;
@@ -221,7 +250,7 @@ namespace Beffio.Dithering
 
 				}else{
 					_effect.Grain_Old = Grain_Old.boolValue;
-				}
+				}*/
 				EditorGUI.indentLevel = 1;
 
 				//EditorGUILayout.Separator();

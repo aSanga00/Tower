@@ -1,13 +1,16 @@
 using System;
 using UnityEngine;
 
+//CheckResources and CheckSupport are the only functions referenced in Stylizer.cs
+//Other than that only these tags transfer
 [ExecuteInEditMode]
 [RequireComponent (typeof(Camera))]
 public class StylizerBase : MonoBehaviour
 {
-    protected bool  supportHDRTextures = true;
-    protected bool  supportDX11 = false;
-    protected bool  isSupported = true;
+    [HideInInspector] public bool  supportHDRTextures = true;
+    [HideInInspector] public bool  supportDX11 = false;
+    [HideInInspector] public bool  isSupported = true;
+    //protected StylizerRenderFeature srf;
 
     
     protected Material CheckShaderAndCreateMaterial ( Shader s, Material m2Create)
@@ -83,6 +86,7 @@ public class StylizerBase : MonoBehaviour
 
     protected void Start ()
     {
+        //srf = StylizerRenderFeature.Instance;
         CheckResources ();
     }
 
