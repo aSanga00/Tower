@@ -22,7 +22,6 @@ namespace Battle.Controller
         [SerializeField] private CheckerBoard board;
 
 
-
         // Start is called before the first frame update
         void Start()
         {
