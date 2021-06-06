@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Battle.Unit;
 
 namespace Battle.Controller
 {
@@ -138,6 +139,19 @@ namespace Battle.Controller
             {
                 unit.UpdateAvator();
             }
+        }
+
+        public BaseAvator GetUnit(int x, int y)
+        {
+            foreach (BaseAvator unit in unitList)
+            {
+                if(unit.CurrentX == x && unit.CurrentY == y)
+                {
+                    return unit;
+                }
+            }
+
+            return null;
         }
     }
 }

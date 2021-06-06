@@ -2,18 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoardManager : MonoBehaviour
+namespace Battle.Map
 {
-    [SerializeField] private CheckerBoard board;
-
-    public void InitializeManager()
+    public class BoardManager : MonoBehaviour
     {
-        board.InitializeBoard();
+        [SerializeField] private CheckerBoard board;
+
+        public void InitializeManager()
+        {
+            board.InitializeBoard();
+        }
+
+        public void SetUnitData()
+        {
+
+        }
+
+        public Unit.BaseAvator GetUnit(int  posX, int posY)
+        {
+            board.GetUnit(posX,posY);
+
+            return null;
+        }
+
     }
-
-    public void SetUnitData()
-    {
-
-    }
-
 }

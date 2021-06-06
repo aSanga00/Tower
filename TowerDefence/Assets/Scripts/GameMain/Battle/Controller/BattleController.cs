@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Battle.Unit;
+using Battle.Map;
 
 namespace Battle.Controller
 {
@@ -19,8 +20,6 @@ namespace Battle.Controller
         [SerializeField] private List<BaseAvator> enemyUnit;
 
         [SerializeField] private CheckerBoard board;
-
-        [SerializeField] private BoardManager boardManager;
 
 
 

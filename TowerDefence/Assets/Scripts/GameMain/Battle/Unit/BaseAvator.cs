@@ -21,7 +21,7 @@ namespace Battle.Unit
         [SerializeField] protected int attack;
         [SerializeField] protected int defence;
         [SerializeField] protected float speed;
-        [SerializeField] protected int movePoint = 3;
+        [SerializeField] public    int MovePoint = 3;
         [SerializeField] protected float attackSpeed;
         [SerializeField] protected float searchRange;
         [SerializeField] protected float attackRange;
@@ -37,6 +37,12 @@ namespace Battle.Unit
         private Action currentAction;
         private Action<int> searchAction;
         private Queue<int> targetQueue = new Queue<int>();
+
+        public int CurrentX;
+
+        public int CurrentY;
+
+        public bool IsMoved;
 
         private float currentCoolTime;
 
@@ -59,6 +65,11 @@ namespace Battle.Unit
         public float MaxRenge
         {
             get { return PrepareRange() ; }
+        }
+
+        public int AttackRange
+        {
+            get { return (int)attackRange; }
         }
 
         public void SetupUnitData(BaseParameter parameter)
