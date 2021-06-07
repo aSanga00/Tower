@@ -53,19 +53,63 @@
     <UnityVersion>2021.1.2f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\GameMain\Battle\Map\CheckerBoard.cs" />
+    <Compile Include="Assets\Scripts\GameMain\Battle\Map\CheckerSquare.cs" />
+    <Compile Include="Assets\Assestore\Stylizer\Resources\Scripts\Pattern.cs" />
+    <Compile Include="Assets\Assestore\Stylizer\Resources\Scripts\UnityGrain\Runtime\PostCont.cs" />
+    <Compile Include="Assets\Assestore\Stylizer\Resources\Scripts\UnityGrain\Runtime\GU.cs" />
+    <Compile Include="Assets\Assestore\Stylizer\Resources\Scripts\Stylizer.cs" />
     <Compile Include="Assets\Scripts\GameMain\Battle\Controller\UnitManager.cs" />
+    <Compile Include="Assets\Scripts\GameMain\Battle\Controller\BoardManager.cs" />
+    <Compile Include="Assets\Assestore\Stylizer\Resources\Scripts\UnityGrain\Runtime\PostComp.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Assestore\Stylizer\Resources\Scripts\UnityGrain\Runtime\GrainMod.cs" />
+    <Compile Include="Assets\Assestore\Stylizer\Resources\Scripts\UnityGrain\Runtime\GrainComp.cs" />
     <Compile Include="Assets\Scripts\GameMain\Battle\Unit\Tower.cs" />
+    <Compile Include="Assets\Assestore\Stylizer\Resources\Scripts\StylizerBase.cs" />
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
     <Compile Include="Assets\Scripts\GameMain\Battle\Controller\PlayerController.cs" />
+    <Compile Include="Assets\Assestore\Stylizer\Resources\Scripts\UnityGrain\Runtime\MF.cs" />
+    <Compile Include="Assets\Assestore\Stylizer\Resources\Scripts\Pixelation.cs" />
+    <Compile Include="Assets\Assestore\Stylizer\Resources\Scripts\UnityGrain\Runtime\PostProf.cs" />
     <Compile Include="Assets\Scripts\GameMain\Battle\Controller\BaseUserController.cs" />
     <Compile Include="Assets\Scripts\GameMain\Battle\Unit\BaseAvator.cs" />
     <Compile Include="Assets\Scripts\GameMain\Battle\Controller\NPCController.cs" />
+    <Compile Include="Assets\Assestore\Stylizer\Resources\Scripts\Palette.cs" />
+    <Compile Include="Assets\Assestore\Stylizer\Resources\Scripts\StylizerRenderFeature.cs" />
+    <Compile Include="Assets\Assestore\Stylizer\Resources\Scripts\UnityGrain\Runtime\PostMod.cs" />
     <Compile Include="Assets\Scripts\GameMain\Battle\Unit\BaseParameter.cs" />
+    <Compile Include="Assets\Assestore\Stylizer\Resources\Scripts\UnityGrain\Runtime\RTF.cs" />
     <Compile Include="Assets\Scripts\GameMain\Battle\Controller\BattleController.cs" />
   </ItemGroup>
   <ItemGroup>
+     <None Include="Assets\Assestore\Stylizer\Resources\Shaders\Diffuse Dithered Transparent - Simple Lights.shader" />
+     <None Include="Assets\Assestore\Stylizer\Resources\Shaders\Standard Dithered - Simple Lights.shader" />
+     <None Include="Assets\Assestore\Stylizer\Resources\Shaders\Diffuse Base Include.cginc" />
+     <None Include="Assets\Assestore\Stylizer\Resources\Shaders\Diffuse Dithered Transparent - Soft Lights.shader" />
+     <None Include="Assets\Assestore\Stylizer\Stylizer - Readme.txt" />
+     <None Include="Assets\Assestore\Stylizer\Resources\Scripts\UnityGrain\Shaders\ColorGrading_Grain.cginc" />
+     <None Include="Assets\Assestore\Stylizer\Resources\Scripts\UnityGrain\Shaders\Bloom_Grain.cginc" />
+     <None Include="Assets\Assestore\Stylizer\Resources\Scripts\UnityGrain\Shaders\GrainGen_Grain.shader" />
+     <None Include="Assets\Assestore\Stylizer\Resources\Shaders\Diffuse Dithered - Soft Lights.shader" />
+     <None Include="Assets\Stylizer\Stylizer - URP - Readme.txt" />
+     <None Include="Assets\Assestore\Stylizer\Resources\Shaders\Standard Base Include.cginc" />
+     <None Include="Assets\Assestore\Stylizer\Resources\Shaders\Standard Dithered Transparent - Soft Lights.shader" />
+     <None Include="Assets\Assestore\Stylizer\Resources\Scripts\UnityGrain\Shaders\NoiseAndGrain_Grain.shader" />
+     <None Include="Assets\Assestore\Stylizer\Resources\Shaders\Dithering Base.cginc" />
+     <None Include="Assets\Assestore\Stylizer\Resources\Scripts\UnityGrain\Shaders\ACES_Grain.cginc" />
      <None Include="Assets\Assestore\BrokenVector\LowPolyTreePack\README.txt" />
+     <None Include="Assets\Assestore\Stylizer\Resources\Scripts\UnityGrain\Shaders\Common_Grain.cginc" />
+     <None Include="Assets\Assestore\Stylizer\Resources\Shaders\Standard Dithered - Soft Lights.shader" />
+     <None Include="Assets\Assestore\Stylizer\Resources\Shaders\ColorFilter.shader" />
+     <None Include="Assets\Assestore\Stylizer\Resources\Shaders\ColorSepOne.shader" />
+     <None Include="Assets\Assestore\Stylizer\Resources\Shaders\Standard Dithered Transparent - Simple Lights.shader" />
+     <None Include="Assets\Assestore\Stylizer\Resources\Shaders\Diffuse Dithered - Simple Lights.shader" />
+     <None Include="Assets\Assestore\Stylizer\Resources\Scripts\UnityGrain\Shaders\UberSecondPass_Grain.cginc" />
+     <None Include="Assets\Assestore\Stylizer\Resources\Shaders\Dithering Image FX.shader" />
+     <None Include="Assets\Assestore\Stylizer\Resources\Shaders\Dithering Material Base.cginc" />
+     <None Include="Assets\Assestore\Stylizer\Resources\Shaders\ColorSepTwo.shader" />
+     <None Include="Assets\Assestore\Stylizer\Resources\Scripts\UnityGrain\Shaders\Uber Shader_Grain.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.1.2f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -296,6 +340,9 @@
     </Reference>
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.1.2f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.1.2f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -713,6 +760,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{D0B779D6-5D8C-BDFD-44EF-DB150906F05D}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Battle.Unit;
+using Battle.Map;
 
 namespace Battle.Controller
 {
@@ -18,9 +19,14 @@ namespace Battle.Controller
 
         [SerializeField] private List<BaseAvator> enemyUnit;
 
+        [SerializeField] private CheckerBoard board;
+
+
         // Start is called before the first frame update
         void Start()
         {
+
+            board.InitializeBoard();
 
             unitManager.AddUnit(playerTower);
 
@@ -31,7 +37,7 @@ namespace Battle.Controller
                 unitManager.AddUnit(unit);
             }
 
-            foreach(Unit.BaseAvator unit in enemyUnit)
+            foreach (Unit.BaseAvator unit in enemyUnit)
             {
                 unitManager.AddUnit(unit);
             }
@@ -39,6 +45,7 @@ namespace Battle.Controller
             unitManager.Search();
 
             unitManager.InitializeUnit();
+
         }
 
         // Update is called once per frame
