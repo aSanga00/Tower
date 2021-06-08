@@ -15,11 +15,11 @@ D:/UnityProjects/Tower/TowerDefence
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-51944
+58903
 Successfully changed project path to: D:/UnityProjects/Tower/TowerDefence
 D:/UnityProjects/Tower/TowerDefence
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 102.59 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 46.10 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.1.2f1 (e5d502d80fbb)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.1.2f1/Editor/Data/Resources/UnitySubsystems
@@ -36,325 +36,66 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.1.2f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.1.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.1.2f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56000
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56288
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.1.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001862 seconds.
+Registered in 0.001850 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 50.62 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 58.04 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.685 seconds
+- Completed reload, in  1.211 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.001162 seconds.
+Registered in 0.001538 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 52.98 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 97.07 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.028 seconds
+- Completed reload, in  2.043 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 0.43 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2496 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 133.6 MB.
-System memory in use after: 133.8 MB.
-
-Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 2963.
-Total: 3.012200 ms (FindLiveObjects: 0.787900 ms CreateObjectMapping: 0.195600 ms MarkObjects: 1.953100 ms  DeleteObjects: 0.073200 ms)
-
-========================================================================
-Received Import Request.
-  path: Assets/Assestore/Stylizer/Scenes/ApocalypseScenes
-  artifactKey: Guid(7670403405349c94ebf2f2bb65164213) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/Stylizer/Scenes/ApocalypseScenes using Guid(7670403405349c94ebf2f2bb65164213) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29515ca21da213123f5df987b3ba336d') in 0.004268 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.950810 seconds.
-  path: Assets/Assestore/Stylizer/Scenes/ApocalypseScenes/Apocalypse_1.unity
-  artifactKey: Guid(436cf53f4813ff0489aa5ddf599b48d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/Stylizer/Scenes/ApocalypseScenes/Apocalypse_1.unity using Guid(436cf53f4813ff0489aa5ddf599b48d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '43bf90cdc92e824af96b50720bcb3221') in 0.021034 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 47.992177 seconds.
-  path: Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs
-  artifactKey: Guid(1eadd62f6288a4dbbbe44ae134630820) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs using Guid(1eadd62f6288a4dbbbe44ae134630820) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f8efd66491a65d23216768239017bfe') in 0.002441 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.363244 seconds.
-  path: Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Boiler.prefab
-  artifactKey: Guid(60e453c3cc04c414b9297dee5511bc55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Boiler.prefab using Guid(60e453c3cc04c414b9297dee5511bc55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d40d331d0bc147cd83d8ecbae977a5c') in 0.544405 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.713873 seconds.
-  path: Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Box_middle.prefab
-  artifactKey: Guid(c8c0991ee502d6a40a47209fc2fabcf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Box_middle.prefab using Guid(c8c0991ee502d6a40a47209fc2fabcf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8657c9a82287575f14f0be4cb7196885') in 0.020493 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.653635 seconds.
-  path: Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Box_normal.prefab
-  artifactKey: Guid(888389105c1c3384a9661958c8668b38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Box_normal.prefab using Guid(888389105c1c3384a9661958c8668b38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60c2a560e8fe8a8f513df8769953558f') in 0.020185 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.248299 seconds.
-  path: Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/CarRoad_ArchedBridge_A.prefab
-  artifactKey: Guid(3663a17f3d9643841a4eea2dd3fe2cc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/CarRoad_ArchedBridge_A.prefab using Guid(3663a17f3d9643841a4eea2dd3fe2cc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f7cc4787a4dd0f3480eb4c0bf208a8a') in 0.021744 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.832575 seconds.
-  path: Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Chimney.prefab
-  artifactKey: Guid(50452a5c087c46d489c41623e6eac91f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Chimney.prefab using Guid(50452a5c087c46d489c41623e6eac91f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f80995aaf5bd73daaa171fb55807222') in 0.075240 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.691874 seconds.
-  path: Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Clif_1.prefab
-  artifactKey: Guid(bc3e84aaa2ee90145bc410005875cbd7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Clif_1.prefab using Guid(bc3e84aaa2ee90145bc410005875cbd7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1c21389fb9ddca377e34ff5f636a7d1f') in 0.024353 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.728254 seconds.
-  path: Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Electricity.prefab
-  artifactKey: Guid(57ad61a49df289e4d85246b3d71ca268) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Electricity.prefab using Guid(57ad61a49df289e4d85246b3d71ca268) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e40ccdc978a924b008c7babd01f7a9d6') in 0.017626 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 11.031139 seconds.
-  path: Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Tire.prefab
-  artifactKey: Guid(6a6e2d48f9b19eb44acca452c2e7f1f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/Stylizer/Resources/ApocalypseScene/Prefabs/Tire.prefab using Guid(6a6e2d48f9b19eb44acca452c2e7f1f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4483ef479208f193ef23acc604b93730') in 0.017824 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3029.729008 seconds.
-  path: Assets/Assestore/Stylizer/Stylizer - Readme.txt
-  artifactKey: Guid(d2234639dd6a741458e9228055b34d30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/Stylizer/Stylizer - Readme.txt using Guid(d2234639dd6a741458e9228055b34d30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e450ad6afbcebf56070a30a207bc97a6') in 0.081287 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 126.671851 seconds.
-  path: Assets/Assestore/Stylizer/Scenes/ApocalypseScenes/Apocalypse_1Settings.lighting
-  artifactKey: Guid(6ba03a14ba07da54fbe84dd2b1dfc414) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/Stylizer/Scenes/ApocalypseScenes/Apocalypse_1Settings.lighting using Guid(6ba03a14ba07da54fbe84dd2b1dfc414) Importer(815301076,1909f56bfc062723c751e8b465ee728b) LightingSettings: switching bake backend from 1 to 0.
- -> (artifact id: 'faefda2e395b5cf63e35f78642256ac7') in 0.015447 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 125.842591 seconds.
-  path: Assets/Assestore/Stylizer/Scenes/ApocalypseScenes/Apocalypse_5_Materials.unity
-  artifactKey: Guid(e8ea6819291247f41b3e756c38fbefb2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/Stylizer/Scenes/ApocalypseScenes/Apocalypse_5_Materials.unity using Guid(e8ea6819291247f41b3e756c38fbefb2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '348776feae2a31ef8e592ad3547254cc') in 0.005875 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 128.122969 seconds.
-  path: Assets/Assestore/Stylizer/URP/Stylizer - Extended - URP.unitypackage
-  artifactKey: Guid(765e263c56a66a34d98b3d090c9e39d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/Stylizer/URP/Stylizer - Extended - URP.unitypackage using Guid(765e263c56a66a34d98b3d090c9e39d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e3f9add6a638eb57d1176892095082ef') in 0.015151 seconds 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001710 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
 Refreshing native plugins compatible for Editor in 0.65 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  2.597 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 2.90 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2375 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 131.8 MB.
-System memory in use after: 132.0 MB.
+Unloading 2500 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 135.2 MB.
+System memory in use after: 135.3 MB.
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3013.
-Total: 8.384500 ms (FindLiveObjects: 0.950500 ms CreateObjectMapping: 0.476400 ms MarkObjects: 6.758900 ms  DeleteObjects: 0.192700 ms)
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 2969.
+Total: 8.506400 ms (FindLiveObjects: 0.859400 ms CreateObjectMapping: 0.558700 ms MarkObjects: 6.774200 ms  DeleteObjects: 0.309300 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 116.878822 seconds.
-  path: Assets/Assestore/Stylizer/Styles/Palette/Black&White/Black&White_1.asset
-  artifactKey: Guid(a14159d0c59ca3249bb025a4d34327e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/Stylizer/Styles/Palette/Black&White/Black&White_1.asset using Guid(a14159d0c59ca3249bb025a4d34327e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81c2a8b527abbc794fe4e276eef43f83') in 0.139730 seconds 
+  path: Assets/ArtWorks/3Dmodels/Textures/StylizedDirt_basecolor.png
+  artifactKey: Guid(f81ecb5737001ff4d82aee59aa7cff3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ArtWorks/3Dmodels/Textures/StylizedDirt_basecolor.png using Guid(f81ecb5737001ff4d82aee59aa7cff3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3bddbd14a55ac1cfdc42a7abb8b358dc') in 0.356063 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 1.023053 seconds.
-  path: Assets/Assestore/Stylizer/Styles/Palette/Black&White/Black&White_2.asset
-  artifactKey: Guid(21c077c326276b1448b8cef742decf0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/Stylizer/Styles/Palette/Black&White/Black&White_2.asset using Guid(21c077c326276b1448b8cef742decf0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33c13fe1e294bf32da6d44af9292e89e') in 0.018410 seconds 
+  Time since last request: 37.494029 seconds.
+  path: Assets/ArtWorks/3Dmodels/Textures/StylizedDirt_height.png
+  artifactKey: Guid(bc7b0f0b0a49f2d45a41fdee3cc80e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ArtWorks/3Dmodels/Textures/StylizedDirt_height.png using Guid(bc7b0f0b0a49f2d45a41fdee3cc80e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b96aca1a98fab244a04e5d22ce95be0e') in 0.020282 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 3.282653 seconds.
-  path: Assets/Assestore/Stylizer/Scenes/ApocalypseScenes/Apocalypse_1.unity
-  artifactKey: Guid(436cf53f4813ff0489aa5ddf599b48d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/Stylizer/Scenes/ApocalypseScenes/Apocalypse_1.unity using Guid(436cf53f4813ff0489aa5ddf599b48d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54ab3821c7e09068180fbc06e540a9cc') in 0.006544 seconds 
+  Time since last request: 1.085838 seconds.
+  path: Assets/ArtWorks/3Dmodels/Textures/StylizedDirt_ambientocclusion.png
+  artifactKey: Guid(eeb723f7929c0af499da4db585d1e7a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ArtWorks/3Dmodels/Textures/StylizedDirt_ambientocclusion.png using Guid(eeb723f7929c0af499da4db585d1e7a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4532258fa7aaf58e42183bceb13bd685') in 0.018990 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 78.578300 seconds.
-  path: Assets/Assestore/Stylizer/Scenes/DetectiveScenes/Detective_1A.unity
-  artifactKey: Guid(1f3d7f3fb957ed04f9cfa5df30a0b7da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/Stylizer/Scenes/DetectiveScenes/Detective_1A.unity using Guid(1f3d7f3fb957ed04f9cfa5df30a0b7da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e8130e8cf8b407e302e02e1204af118') in 0.008665 seconds 
+  Time since last request: 4.503998 seconds.
+  path: Assets/ArtWorks/3Dmodels/Textures/StylizedDirt__512ambientocclusion.png
+  artifactKey: Guid(eeb723f7929c0af499da4db585d1e7a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ArtWorks/3Dmodels/Textures/StylizedDirt__512ambientocclusion.png using Guid(eeb723f7929c0af499da4db585d1e7a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0609dcf4e4733289cdf878612ef914e0') in 0.020984 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 481.050283 seconds.
-  path: Assets/Assestore/Stylizer/Styles/Palette/Vintage/Vintage_19.asset
-  artifactKey: Guid(44a1aa07aec8be04d82682279366a15f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/Stylizer/Styles/Palette/Vintage/Vintage_19.asset using Guid(44a1aa07aec8be04d82682279366a15f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd1cf14058cc200fed03db8b2ff2f1ecc') in 0.013359 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 53.984825 seconds.
-  path: Assets/Assestore/Stylizer/Scenes/SpaceScenes/Planet_1.unity
-  artifactKey: Guid(2b7957819945f3c43897ac2b9cc80d8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/Stylizer/Scenes/SpaceScenes/Planet_1.unity using Guid(2b7957819945f3c43897ac2b9cc80d8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a951a20768960a24e7ab82f65997fcdd') in 0.002916 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.621145 seconds.
-  path: Assets/Assestore/Stylizer/Scenes/SpaceScenes/Planet_2.unity
-  artifactKey: Guid(1bb3a05e512d1db46808a175cf90fc5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/Stylizer/Scenes/SpaceScenes/Planet_2.unity using Guid(1bb3a05e512d1db46808a175cf90fc5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd2aeb87a5100a9af7196e993400e1b19') in 0.006929 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 257.175367 seconds.
-  path: Assets/Assestore/Stylizer/Resources/Shaders/Dithering Image FX.shader
-  artifactKey: Guid(0e4c0c6d48b7240d8b59f441b94c2b0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/Stylizer/Resources/Shaders/Dithering Image FX.shader using Guid(0e4c0c6d48b7240d8b59f441b94c2b0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '779516ce20efdf1f714421c110712e03') in 0.012420 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 25.878535 seconds.
-  path: Assets/Assestore/Stylizer/Scenes/MountainsScenes/Mountains_3.unity
-  artifactKey: Guid(ffea3bd00c68de84c945da3f1681eadd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/Stylizer/Scenes/MountainsScenes/Mountains_3.unity using Guid(ffea3bd00c68de84c945da3f1681eadd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5bf91c4704e61504271cef49068b2654') in 0.012878 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 166.547391 seconds.
-  path: Assets/Assestore/DogKnight/Prefab/DogPBR.prefab
-  artifactKey: Guid(214e08cd5e5d74c458e2a81b7ec2c84c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/DogKnight/Prefab/DogPBR.prefab using Guid(214e08cd5e5d74c458e2a81b7ec2c84c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e07f1e04bb8b3f76d574e863ce165d34') in 0.680040 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.033392 seconds.
-  path: Assets/Assestore/DogKnight/Prefab/DogPolyart.prefab
-  artifactKey: Guid(45288819fde2143449a96207b14db0bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/DogKnight/Prefab/DogPolyart.prefab using Guid(45288819fde2143449a96207b14db0bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1285cda2ece2c1c00e4543f8e17e6720') in 0.114221 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 723.890033 seconds.
-  path: Assets/Scenes/GameMainScene.unity
-  artifactKey: Guid(b38b8322d7f49a345a0b46a95d4ca86d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/GameMainScene.unity using Guid(b38b8322d7f49a345a0b46a95d4ca86d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c1183adb231be2828e2f9704ea504d7') in 0.005636 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2152.311367 seconds.
-  path: Assets/ArtWorks/3Dmodels/Textures/TexturesCom_Nature_Moss_512_albedo.tif
-  artifactKey: Guid(f98f040824eb3e14581519d3d0758ac2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ArtWorks/3Dmodels/Textures/TexturesCom_Nature_Moss_512_albedo.tif using Guid(f98f040824eb3e14581519d3d0758ac2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd4e039bca6e6411f67ec6b47b7310ac6') in 0.073074 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2476.549583 seconds.
-  path: Assets/ArtWorks/3Dmodels/FBX/Ground_Cell_1x1_01.fbx
-  artifactKey: Guid(da8182c7422b8474b90d63a1b8506267) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ArtWorks/3Dmodels/FBX/Ground_Cell_1x1_01.fbx using Guid(da8182c7422b8474b90d63a1b8506267) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3187fd154a3b582c2397df07414694a3') in 0.596483 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 38.126459 seconds.
-  path: Assets/ArtWorks/3Dmodels/FBX/Ground_Cell_1x1_01.fbx
-  artifactKey: Guid(da8182c7422b8474b90d63a1b8506267) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ArtWorks/3Dmodels/FBX/Ground_Cell_1x1_01.fbx using Guid(da8182c7422b8474b90d63a1b8506267) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e0659ac0bfc4a426e16b172cf2d6c9df') in 0.018131 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 293.274638 seconds.
-  path: Assets/ArtWorks/3Dmodels/Prefabs/Ground_Cell_1x1_01.prefab
-  artifactKey: Guid(7b4cddf5efc650e4bb1ac2f6b0d2880c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ArtWorks/3Dmodels/Prefabs/Ground_Cell_1x1_01.prefab using Guid(7b4cddf5efc650e4bb1ac2f6b0d2880c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e408e84c30c6aa493caa29524f5f00c') in 0.033013 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 11.557157 seconds.
-  path: Assets/Scenes/GameMainScene_yagi.unity
-  artifactKey: Guid(be9933433d3410f4087abd3935e9ed72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/GameMainScene_yagi.unity using Guid(be9933433d3410f4087abd3935e9ed72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e561d0e7848c6c0dd4e6463c9e5f008f') in 0.005637 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 736.247292 seconds.
-  path: Assets/Scenes/GameMainScene_yagi.unity
-  artifactKey: Guid(be9933433d3410f4087abd3935e9ed72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/GameMainScene_yagi.unity using Guid(be9933433d3410f4087abd3935e9ed72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ecd129e518cb5f28d649ef0b496619df') in 0.004079 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 27.112925 seconds.
-  path: Assets/ArtWorks/3Dmodels/Prefabs/Ground_Cell_1x1_01.prefab
-  artifactKey: Guid(7b4cddf5efc650e4bb1ac2f6b0d2880c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ArtWorks/3Dmodels/Prefabs/Ground_Cell_1x1_01.prefab using Guid(7b4cddf5efc650e4bb1ac2f6b0d2880c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38e86c3370b8c07a829c3dce785b726e') in 0.068936 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3814.989244 seconds.
-  path: Assets/ArtWorks/3Dmodels/Scenes
-  artifactKey: Guid(491e3e2209f9f5348ab282549e4f5d41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ArtWorks/3Dmodels/Scenes using Guid(491e3e2209f9f5348ab282549e4f5d41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '89660c82b6d0bb01bb3b829a76b1be8c') in 0.010703 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 77.731483 seconds.
-  path: Assets/Scenes/New Lighting Settings.lighting
-  artifactKey: Guid(a343dfaf7e8b50346906f586da34fb50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/New Lighting Settings.lighting using Guid(a343dfaf7e8b50346906f586da34fb50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c9012653b8ddcb1c4f73378ee081afb1') in 0.015841 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 30.660744 seconds.
-  path: Assets/Scenes/New Lighting Settings.lighting
-  artifactKey: Guid(a343dfaf7e8b50346906f586da34fb50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/New Lighting Settings.lighting using Guid(a343dfaf7e8b50346906f586da34fb50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cde4dfbdbe72d680b3a5a1c3ef7e3206') in 0.004882 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 72.964221 seconds.
-  path: Assets/Scenes/New Lighting Settings.lighting
-  artifactKey: Guid(a343dfaf7e8b50346906f586da34fb50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/New Lighting Settings.lighting using Guid(a343dfaf7e8b50346906f586da34fb50) Importer(815301076,1909f56bfc062723c751e8b465ee728b) LightingSettings: switching bake backend from 1 to 0.
- -> (artifact id: 'c695acf718dd985755213a39b7da9fbe') in 0.005576 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 9.066794 seconds.
-  path: Assets/Scenes/New Lighting Settings.lighting
-  artifactKey: Guid(a343dfaf7e8b50346906f586da34fb50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/New Lighting Settings.lighting using Guid(a343dfaf7e8b50346906f586da34fb50) Importer(815301076,1909f56bfc062723c751e8b465ee728b) LightingSettings: switching bake backend from 1 to 0.
- -> (artifact id: '6f6bfe5d46df96b668b118f14d967f10') in 0.004500 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 139.972883 seconds.
-  path: Assets/Scenes/New Lighting Settings.lighting
-  artifactKey: Guid(a343dfaf7e8b50346906f586da34fb50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/New Lighting Settings.lighting using Guid(a343dfaf7e8b50346906f586da34fb50) Importer(815301076,1909f56bfc062723c751e8b465ee728b) LightingSettings: switching bake backend from 1 to 0.
- -> (artifact id: 'f77a0ca6ccab685437ca070b5c4662fb') in 0.004797 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 159.862483 seconds.
-  path: Assets/ArtWorks/3Dmodels/FBX/Ground_Cell_1x1_01.fbx
-  artifactKey: Guid(da8182c7422b8474b90d63a1b8506267) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ArtWorks/3Dmodels/FBX/Ground_Cell_1x1_01.fbx using Guid(da8182c7422b8474b90d63a1b8506267) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f758c28b04790c38dc78d8642e47ba3c') in 0.102934 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 344.323978 seconds.
-  path: Assets/ArtWorks/3Dmodels/Prefabs/Tower_Enemy_01.prefab
-  artifactKey: Guid(a7f351c57a0c34045923ac384cc93689) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ArtWorks/3Dmodels/Prefabs/Tower_Enemy_01.prefab using Guid(a7f351c57a0c34045923ac384cc93689) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c0c70cf8a5f7f48d5c99bc0b04a292ff') in 0.038649 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2218.668896 seconds.
-  path: Assets/Assestore/BrokenVector/LowPolyTreePack/Prefabs/Tree Type2 05.prefab
-  artifactKey: Guid(c7bcf19bbfa57ed4ea9147dff66d5542) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assestore/BrokenVector/LowPolyTreePack/Prefabs/Tree Type2 05.prefab using Guid(c7bcf19bbfa57ed4ea9147dff66d5542) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f18fe9e5910e8ae0cc93bc9ac703e4a8') in 0.130518 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 140.188197 seconds.
-  path: ProjectSettings/TagManager.asset
-  artifactKey: Guid(00000000000000003000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing ProjectSettings/TagManager.asset using Guid(00000000000000003000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0f716f17cd93b521b54ecae6bfd8deb3') in 0.016166 seconds 
+  Time since last request: 5.813802 seconds.
+  path: Assets/ArtWorks/3Dmodels/Textures/StylizedDirt_512_ambientocclusion.png
+  artifactKey: Guid(eeb723f7929c0af499da4db585d1e7a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ArtWorks/3Dmodels/Textures/StylizedDirt_512_ambientocclusion.png using Guid(eeb723f7929c0af499da4db585d1e7a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '852c939b0383a5270a2e78c0ad49ae08') in 0.012418 seconds 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file

@@ -29,7 +29,6 @@
 			"Queue"="Geometry"
 			"RenderType"="Opaque"
 			"IgnoreProjector"="false"
-			"RenderPipeline" = "UniversalPipeline"
 		}
 		LOD 200
 		
@@ -51,7 +50,6 @@
 				#endif
 			}
 		ENDCG
-		
 	}
 	FallBack "Diffuse"
 	CustomEditor "Beffio.Dithering.DiffuseDitheredEditor"

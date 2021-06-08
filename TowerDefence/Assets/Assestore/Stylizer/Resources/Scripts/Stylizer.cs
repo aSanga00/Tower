@@ -111,6 +111,7 @@ namespace Beffio.Dithering
 		RenderTexture renTex =  null;
 		GameObject pixelator = null;
 		GameObject quad = null;
+
 		Renderer quadRenderer = null;
 
 		int previousWidth = -1;
@@ -120,6 +121,7 @@ namespace Beffio.Dithering
 		#endregion
 
 		/* GRAIN VARIABLES */
+
 		#region Grain variables
 
 		public float intensityMultiplier = 0.25f;
@@ -144,12 +146,12 @@ namespace Beffio.Dithering
 		
 
         public Shader noiseShader;
-        [HideInInspector] public Material noiseMaterial = null;
+        private Material noiseMaterial = null;
 
         public Shader dx11NoiseShader;
-        [HideInInspector] public Material dx11NoiseMaterial = null;
+        private Material dx11NoiseMaterial = null;
 
-        [HideInInspector] public static float TILE_AMOUNT = 64.0f;
+        private static float TILE_AMOUNT = 64.0f;
 
 		Material mat; 
 
@@ -166,20 +168,13 @@ namespace Beffio.Dithering
 		public Material gm =  null;
 		
 
-		[HideInInspector] public GrainComp m_Grain;
-		[HideInInspector] public PostCont m_Context = new PostCont();
-		[HideInInspector] public RTF m_RenderTextureFactory = new RTF();
-		[HideInInspector] public MF m_MaterialFactory = new MF();
+		GrainComp m_Grain;
+		PostCont m_Context = new PostCont();
+		RTF m_RenderTextureFactory = new RTF();
+		MF m_MaterialFactory = new MF();
 
-		[HideInInspector] public List<PostComp> m_Components = new List<PostComp>();
+		List<PostComp> m_Components = new List<PostComp>();
 
-		#endregion
-
-		/* SCREENSHOT VARIABLES */
-		#region Screenshot variables
-		public int width = 1920;
-		public int height = 1080;
-		public string savePath = "";
 		#endregion
 
 		/* SETUP */
@@ -332,14 +327,14 @@ namespace Beffio.Dithering
             return isSupported;
         }
 
+
 		#endregion
 
 		/* RENDERING */
 		#region Rendering
-		/*[ImageEffectTransformsToLDR]
+		 [ImageEffectTransformsToLDR]
 		private void OnRenderImage(RenderTexture source, RenderTexture destination)
 		{
-
 		
 			if((Dither && !Grain_Old && !Grain_New)||(Dither && !Grain)) {
 				DitherRender(source,destination);			
@@ -394,8 +389,6 @@ namespace Beffio.Dithering
 			
 		}
 
-
-		//PORTED
 		private void DitherRender(RenderTexture source, RenderTexture destination){
 
 
@@ -419,7 +412,6 @@ namespace Beffio.Dithering
 
 		}
 
-		//UNPORTABLE
 		private void OldGrainRender(RenderTexture source, RenderTexture destination){
 
 			if (CheckResources()==false || (null==noiseTexture))
@@ -489,7 +481,6 @@ namespace Beffio.Dithering
 
 		}
 
-		//UNPORTABLE
 		private void Combine(RenderTexture source, RenderTexture destination){
 			
 			RenderTexture transport = RenderTexture.GetTemporary(cam.pixelWidth,cam.pixelHeight);
@@ -521,7 +512,7 @@ namespace Beffio.Dithering
 						DrawNoiseQuadGrid (source, rt, dx11NoiseMaterial, noiseTexture, monochrome ? 3 : 2);
 						dx11NoiseMaterial.SetTexture("_NoiseTex", rt);
 						
-						// THE BLIT
+						/* THE BLIT */
 						Graphics.Blit(source, transport, dx11NoiseMaterial, 4);
 
 						RenderTexture.ReleaseTemporary(rt);
@@ -551,7 +542,7 @@ namespace Beffio.Dithering
 						DrawNoiseQuadGrid (source, rt2, noiseMaterial, noiseTexture, 2);
 						noiseMaterial.SetTexture("_NoiseTex", rt2);
 						
-						//THE BLIT
+						/* THE BLIT */
 						Graphics.Blit(source, transport, noiseMaterial, 1);
 						
 						RenderTexture.ReleaseTemporary(rt2);
@@ -582,7 +573,6 @@ namespace Beffio.Dithering
 				RenderTexture.ReleaseTemporary(transport);
 		}
 
-		//PORTED
 		private void NewGrainRender(RenderTexture source, RenderTexture destination){
 			if(profile.grain.enabled==false){
 				profile.grain.enabled=true;
@@ -697,7 +687,7 @@ namespace Beffio.Dithering
 					DrawNoiseQuadGrid (source, rt, dx11NoiseMaterial, noiseTexture, monochrome ? 3 : 2);
 					dx11NoiseMaterial.SetTexture("_NoiseTex", rt);
 					
-					//THE BLIT
+					/* THE BLIT */
 					Graphics.Blit(source, transport, dx11NoiseMaterial, 4);
 
 					RenderTexture.ReleaseTemporary(rt);
@@ -727,7 +717,7 @@ namespace Beffio.Dithering
 					DrawNoiseQuadGrid (source, rt2, noiseMaterial, noiseTexture, 2);
 					noiseMaterial.SetTexture("_NoiseTex", rt2);
 					
-					//THE BLIT
+					/* THE BLIT */
 					Graphics.Blit(source, transport, noiseMaterial, 1);
 					
 					RenderTexture.ReleaseTemporary(rt2);
@@ -797,7 +787,7 @@ namespace Beffio.Dithering
 					DrawNoiseQuadGrid (source, rt, dx11NoiseMaterial, noiseTexture, monochrome ? 3 : 2);
 					dx11NoiseMaterial.SetTexture("_NoiseTex", rt);
 					
-					//THE BLIT
+					/* THE BLIT */
 					Graphics.Blit(source, transport, dx11NoiseMaterial, 4);
 
 					RenderTexture.ReleaseTemporary(rt);
@@ -827,7 +817,7 @@ namespace Beffio.Dithering
 					DrawNoiseQuadGrid (source, rt2, noiseMaterial, noiseTexture, 2);
 					noiseMaterial.SetTexture("_NoiseTex", rt2);
 					
-					//THE BLIT
+					/* THE BLIT */
 					Graphics.Blit(source, transport, noiseMaterial, 1);
 					
 					RenderTexture.ReleaseTemporary(rt2);
@@ -947,7 +937,7 @@ namespace Beffio.Dithering
             GL.End ();
             GL.PopMatrix ();
         }
-		*/
+
 		#endregion
 
 		/* PIXELATION FUNCTIONALITY */
@@ -975,6 +965,7 @@ namespace Beffio.Dithering
 			if(pixelator == null || cam == null || quad == null || ortoCamera == null) {
 				SetUpPixelator();
 			}
+
 
 			if(renTex == null && Pixelate) {
 
@@ -1009,9 +1000,6 @@ namespace Beffio.Dithering
 				ortoCamera.enabled = true;
 				cam.targetTexture = renTex;
 			}
-
-			//Fire the OnRenderImage (used to fire by itself but now in SRP it's just a regular function)
-			//OnRenderImage();
 
 		}
 		//update the render texture
@@ -1110,140 +1098,6 @@ namespace Beffio.Dithering
             return true;
         }
 
-		#endregion
-
-		#region Color separated export functions
-		
-		/*public void SeparateColorsToPng(){
-
-			if(width<=0 || height <= 0){
-				Debug.LogError("Wrong screenshot dimensions");
-				return;
-			}
-
-			if(savePath==""){
-				Debug.LogError("Wrong save path");
-				return;
-			}
-			
-			int i = 0;
-			foreach(Color color in Palette.Colors){
-				RenderTexture rt = new RenderTexture(width, height, 24);
-				RenderTexture tmp = new RenderTexture(width, height, 24);
-				cam.targetTexture = rt;
-				//ARGB32 RGB24
-				TextureFormat tFormat = TextureFormat.ARGB32;
-				Texture2D screenShot = new Texture2D(width, height, tFormat,false);
-
-				Material colorSepMat = new Material(Shader.Find("Beffio/Image Effects/ColorFilter"));
-				colorSepMat.SetColor("_FilterColor",color);
-				cam.Render();
-
-				Graphics.Blit(rt,tmp,colorSepMat);
-				//Graphics.Blit(tmp,rt);
-
-				RenderTexture.active = tmp;
-				screenShot.ReadPixels(new Rect(0, 0, width, height), 0, 0);
-				cam.targetTexture = null;
-				RenderTexture.active = null; 
-				byte[] bytes = screenShot.EncodeToPNG();
-				string filename = ScreenShotName(width, height, i);
-				
-				System.IO.File.WriteAllBytes(filename, bytes);
-				i++;
-			}
-			Debug.Log(string.Format("Took {0} screenshots to: {1}",Palette.Colors.Count, savePath));
-
-			
-		}*/
-		public void SeparateColorsToPng() {
-
-			if(width <= 0 || height <= 0) {
-				Debug.LogError("Wrong screenshot dimensions");
-				return;
-			}
-
-			if(savePath == "") {
-				Debug.LogError("Wrong save path");
-				return;
-			}
-
-			int i = 0;
-			foreach(Color color in Palette.Colors) {
-				RenderTexture rt = new RenderTexture(width, height, 24);
-				RenderTexture dither1 = new RenderTexture(width, height, 24);
-				RenderTexture dither2 = new RenderTexture(width, height, 24);
-				RenderTexture sep1 = new RenderTexture(width, height, 24);
-				RenderTexture sep2 = new RenderTexture(width, height, 24);
-
-				cam.targetTexture = rt;
-				//ARGB32 RGB24
-				TextureFormat tFormat = TextureFormat.ARGB32;
-				Texture2D screenShot = new Texture2D(width, height, tFormat, false);
-
-				Material colorSepMat = new Material(Shader.Find("Beffio/Image Effects/ColorFilter"));
-				colorSepMat.SetColor("_FilterColor", color);
-
-				Texture2D patTex = (_pattern == null ? _patternTexture : _pattern.Texture);
-
-				Material colorSepOne = new Material(Shader.Find("Beffio/Image Effects/ColorSepOne"));
-				colorSepOne.SetFloat("_PaletteColorCount", _palette.MixedColorCount);
-				colorSepOne.SetFloat("_PaletteHeight", _palette.Texture.height);
-				colorSepOne.SetTexture("_PaletteTex", _palette.Texture);
-				colorSepOne.SetFloat("_PatternSize", patTex.width);
-				colorSepOne.SetTexture("_PatternTex", patTex);
-				Material colorSepTwo = new Material(Shader.Find("Beffio/Image Effects/ColorSepTwo"));
-				colorSepTwo.SetFloat("_PaletteColorCount", _palette.MixedColorCount);
-				colorSepTwo.SetFloat("_PaletteHeight", _palette.Texture.height);
-				colorSepTwo.SetTexture("_PaletteTex", _palette.Texture);
-				colorSepTwo.SetFloat("_PatternSize", patTex.width);
-				colorSepTwo.SetTexture("_PatternTex", patTex);
-
-				cam.Render();
-
-				Graphics.Blit(rt, dither1, colorSepOne);
-				Graphics.Blit(dither1,sep1,colorSepMat);
-
-				Graphics.Blit(rt, dither2, colorSepTwo);
-				Graphics.Blit(dither2, sep2, colorSepMat);
-				//Graphics.Blit(tmp,rt);
-
-				RenderTexture.active = sep1;
-				screenShot.ReadPixels(new Rect(0, 0, width, height), 0, 0);
-				//cam.targetTexture = null;
-				//RenderTexture.active = null;
-				byte[] bytes = screenShot.EncodeToPNG();
-				string filename = ScreenShotName(width, height, i);
-
-				System.IO.File.WriteAllBytes(filename, bytes);
-				i++;
-
-				RenderTexture.active = sep2;
-				screenShot.ReadPixels(new Rect(0, 0, width, height), 0, 0);
-				bytes = screenShot.EncodeToPNG();
-				filename = ScreenShotName(width, height, i);
-
-				System.IO.File.WriteAllBytes(filename, bytes);
-
-				cam.targetTexture = null;
-				RenderTexture.active = null;
-
-				i++;
-			}
-			Debug.Log(string.Format("Took {0} screenshots to: {1}", Palette.Colors.Count*2, savePath));
-
-
-		}
-		public string ScreenShotName(int width, int height, int number) {
-			string strPath="";
-			strPath = string.Format("{0}/screen_{1}x{2}_{3}_{4}.png", 
-								savePath, 
-								width, 
-								height, 
-								System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"),
-								number);
-			return strPath;
-		} 
 		#endregion
 
 	}

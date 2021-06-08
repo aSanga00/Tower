@@ -115,14 +115,10 @@ namespace Beffio.Dithering
 		private void DrawColorElement(Rect rect, int index, bool isActive, bool isFocused)
 		{
 			rect.y += 2;
-			SerializedProperty element = ColorList.serializedProperty.GetArrayElementAtIndex(index);
-			GUIContent label = new GUIContent(index.ToString());
-			float prevWidth = EditorGUIUtility.labelWidth;
-			EditorGUIUtility.labelWidth = 15.0f;
+			SerializedProperty element = ColorList.serializedProperty.GetArrayElementAtIndex(index); 
 			EditorGUI.PropertyField(  
 				new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight),
-				element, label);
-			EditorGUIUtility.labelWidth = prevWidth;
+				element, GUIContent.none);
 		}
 
 		private void AddColorElement(ReorderableList list)
