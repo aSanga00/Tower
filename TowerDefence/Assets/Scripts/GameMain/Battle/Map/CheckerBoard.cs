@@ -16,8 +16,7 @@ namespace Battle.Map
         [SerializeField] private int Ysize;
 
         [SerializeField]
-        private /*CheckerSquare[,] checkerSquares;*/
-                List<CheckerSquare> checkerSquares = new List<CheckerSquare>();
+        private List<CheckerSquare> checkerSquares = new List<CheckerSquare>();
 
         [SerializeField]
         private Controller.UnitManager unitManager;
@@ -142,6 +141,14 @@ namespace Battle.Map
             return checkerSquares.First(c => c.X == x && c.Y == y);
         }
 
+
+        /// <summary>
+        /// 目標のマスまでの距離を取得します
+        /// </summary>
+        /// <param name="baseSquare"></param>
+        /// <param name="distanceMin"></param>
+        /// <param name="distanceMax"></param>
+        /// <returns></returns>
         public CheckerSquare[] GetCellsByDistance(CheckerSquare baseSquare, int distanceMin, int distanceMax)
         {
             return checkerSquares.Where(x =>
@@ -310,36 +317,6 @@ namespace Battle.Map
         public void AttackTo(Unit.BaseAvator fromUnit, Unit.BaseAvator toUnit)
         {
            
-        }
-
-        /// <summary>
-        /// 自軍のユニットを取得します
-        /// </summary>
-        /// <returns>The own units.</returns>
-        //public Unit.BaseAvator[] GetOwnUnits()
-        //{
-        //    return BoardManager.
-        //    //return unitContainer.GetComponentsInChildren<Unit.BaseAvator>().Where(x => x.team == currentTeam).ToArray();
-        //}
-
-        ///// <summary>
-        ///// 敵軍のユニットを取得します
-        ///// </summary>
-        ///// <returns>The enemy units.</returns>
-        //public Unit.BaseAvator[] GetEnemyUnits()
-        //{
-        //    return unitContainer.GetComponentsInChildren<Unit.BaseAvator>().Where(x => x.team != currentTeam).ToArray();
-        //}
-
-        /// <summary>
-        /// 任意の座標にいるユニットを取得します
-        /// </summary>
-        /// <returns>The unit.</returns>
-        /// <param name="x">The x coordinate.</param>
-        /// <param name="y">The y coordinate.</param>
-        public Unit.BaseAvator GetUnit(int x, int y)
-        {
-            return  null;
         }
 
         /// <summary>
