@@ -1,9 +1,19 @@
 fileFormatVersion: 2
 guid: 56c29e942760c744c88927e0870bc8d6
 ModelImporter:
-  serializedVersion: 21100
+  serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_StylizedDirt_basecolor
+    second: {fileID: 2100000, guid: 840e452430800934ea937d24cde212d1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_TexturesCom_Nature_Moss_512
+    second: {fileID: 2100000, guid: 8ceebca2a9e68db42b84457139fb3cce, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -95,7 +105,6 @@ ModelImporter:
   animationType: 2
   humanoidOversampling: 1
   avatarSetup: 0
-  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
