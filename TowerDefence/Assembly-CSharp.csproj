@@ -55,12 +55,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ToonShader\AwesomeToonHelper.cs" />
      <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
      <Compile Include="Assets\Assestore\Stylizer\Resources\Scripts\UnityGrain\Runtime\GU.cs" />
      <Compile Include="Assets\Scripts\GameMain\Battle\Controller\BaseUserController.cs" />
      <Compile Include="Assets\Scripts\GameMain\Battle\Controller\PlayerController.cs" />
      <Compile Include="Assets\Assestore\Stylizer\Resources\Scripts\UnityGrain\Runtime\PostCont.cs" />
      <Compile Include="Assets\Scripts\GameMain\Battle\Map\CheckerSquare.cs" />
+     <Compile Include="Assets\ToonShader\Extra\LightFlicker.cs" />
      <Compile Include="Assets\Assestore\Stylizer\Resources\Scripts\UnityGrain\Runtime\RTF.cs" />
      <Compile Include="Assets\Assestore\Stylizer\Resources\Scripts\Stylizer.cs" />
      <Compile Include="Assets\Assestore\Stylizer\Resources\Scripts\Pattern.cs" />
@@ -69,7 +71,6 @@
      <Compile Include="Assets\Scripts\GameMain\Battle\Controller\BattleController.cs" />
      <Compile Include="Assets\Scripts\GameMain\Battle\Unit\BaseParameter.cs" />
      <Compile Include="Assets\Assestore\Stylizer\Resources\Scripts\UnityGrain\Runtime\GrainMod.cs" />
-     <Compile Include="Assets\Scripts\GameMain\Battle\Controller\BoardManager.cs" />
      <Compile Include="Assets\Assestore\Stylizer\Resources\Scripts\UnityGrain\Runtime\PostComp.cs" />
      <Compile Include="Assets\Assestore\Stylizer\Resources\Scripts\UnityGrain\Runtime\MF.cs" />
      <Compile Include="Assets\Assestore\Stylizer\Resources\Scripts\StylizerBase.cs" />
