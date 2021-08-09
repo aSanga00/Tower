@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Battle.Map;
 
 namespace Battle.Unit
 {
@@ -9,6 +10,10 @@ namespace Battle.Unit
 
     public enum ActionType { wait,move,attack,defeat,end };
 
+
+    /// <summary>
+    /// キャラのベースデータ
+    /// </summary>
     public class BaseAvator : MonoBehaviour
     {
         [SerializeField] private int controlId;
@@ -33,10 +38,8 @@ namespace Battle.Unit
 
         private Vector3 homePosition;
         private Vector3 targetPosition;
-        private Action presetAction;
         private Action currentAction;
-        private Action<int> searchAction;
-        private Queue<int> targetQueue = new Queue<int>();
+        private Queue<CheckerSquare> targetQueue = new Queue<CheckerSquare>();
 
         public int CurrentX;
 
@@ -72,6 +75,11 @@ namespace Battle.Unit
             get { return (int)attackRange; }
         }
 
+
+        /// <summary>
+        /// ユニットデータのセットアップ
+        /// </summary>
+        /// <param name="parameter"></param>
         public void SetupUnitData(BaseParameter parameter)
         {
             id = parameter.id;
@@ -87,19 +95,32 @@ namespace Battle.Unit
             actionType = ActionType.wait;
         }
 
-        public void SetMoveTarget(Transform targetTrans)
+        public void SetMoveRouteQueue(CheckerSquare[] squares)
         {
-            target = targetTrans;
+            targetQueue.Clear();
+            foreach(var square in squares)
+            {
+                targetQueue.Enqueue(square);
+            }
+            SetMoveTarget();
+            PresetMove();
         }
 
-        public void AddTarget(int id)
+        /// <summary>
+        /// 移動先の設定
+        /// </summary>
+        /// <param name="targetTrans"></param>
+        public bool SetMoveTarget()
         {
-            
-        }
-
-        public void RemoveTarget(int id)
-        {
-           
+            if (targetQueue.Count > 0)
+            {
+                var square = targetQueue.Dequeue();
+                target = square.transform;
+                targetPosition = target.localPosition;
+                homePosition = transform.localPosition;
+                return true;
+            }
+            return false;
         }
 
         private float PrepareRange()
@@ -112,23 +133,20 @@ namespace Battle.Unit
         }
 
         // Use this for initialization
-        public void InitializeUnit(Action<int> action)
+        public void InitializeUnit()
         {
             targetPosition = target.localPosition;
             homePosition = transform.localPosition;
-            presetAction = Move;
-            searchAction = action;
+            currentAction = Wait;
         }
 
         
         // Update is called once per frame
         public void UpdateAvator()
         {
-            PresetAction();
             currentAction?.Invoke();
 
             UpdateCoolTime();
-
         }
 
         private void Update()
@@ -161,11 +179,6 @@ namespace Battle.Unit
             homePosition = transform.localPosition;
         }
 
-        private void Search()
-        {
-            searchAction?.Invoke(controlId);
-        }
-
         protected virtual void Attack()
         {
 
@@ -186,14 +199,16 @@ namespace Battle.Unit
 
         protected virtual void Move()
         {
+            if(transform.position == targetPosition)
+            {
+                if(!SetMoveTarget())
+                {
+                    PresetWait();
+                    return;
+                }
+            }
             MovePosition();
         }
-
-        protected virtual void PresetAction()
-        {
-            presetAction?.Invoke();
-        }
-
 
         protected virtual void PresetAttack()
         {
@@ -202,7 +217,6 @@ namespace Battle.Unit
                 actionType = ActionType.attack;
                 SetAnimator(actionType);
                 SetAnimatorTrigger(actionType);
-                presetAction = null;
             }
         }
 
@@ -210,7 +224,6 @@ namespace Battle.Unit
         {
             actionType = ActionType.defeat;
             SetAnimator(actionType);
-            presetAction = null;
         }
 
         protected virtual void PresetWait()
@@ -218,16 +231,13 @@ namespace Battle.Unit
             actionType = ActionType.wait;
             SetAnimator(actionType);
             currentAction = Wait;
-            presetAction = null;
-
         }
 
         protected virtual void PresetMove()
         {
             actionType = ActionType.move;
-            MovePosition();
+            currentAction = Move;
             SetAnimator(actionType);
-            presetAction = null;
 
         }
 

@@ -7,6 +7,9 @@ using Battle.Map;
 
 namespace Battle.Controller
 {
+    /// <summary>
+    /// バトルの制御部分
+    /// </summary>
     public class BattleController : MonoBehaviour
     {
         [SerializeField] private Tower playerTower;
@@ -42,7 +45,9 @@ namespace Battle.Controller
                 unitManager.AddUnit(unit);
             }
 
-            unitManager.Search();
+            board.Setup(unitManager);
+
+            unitManager.SetBoard(board);
 
             unitManager.InitializeUnit();
 
@@ -52,10 +57,11 @@ namespace Battle.Controller
         void Update()
         {
             unitManager.UpdateUnit();
-           // UpdateDamages();
-           // CheckDead();
         }
 
+        /// <summary>
+        /// ダメージ更新
+        /// </summary>
         private void UpdateDamages()
         {
             playerTower.UpdateDamage(0);
@@ -63,6 +69,9 @@ namespace Battle.Controller
 
         }
 
+        /// <summary>
+        /// 死亡チェック
+        /// </summary>
         private void CheckDead()
         {
             if(playerTower.IsDead)
@@ -75,21 +84,17 @@ namespace Battle.Controller
             }
         }
 
-        private void UpdateTarget()
-        {
-
-        }
-
-        private void UpdatePlayerTarget()
-        {
-           
-        }
-
+        /// <summary>
+        /// 勝利判定
+        /// </summary>
         private void Win()
         {
 
         }
 
+        /// <summary>
+        /// 敗北判定
+        /// </summary>
         private void Lose()
         {
 

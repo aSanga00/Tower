@@ -1,19 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using Battle.Unit;
+using Battle.Map;
 
 namespace Battle.Controller
 {
+    /// <summary>
+    /// ユニット管理
+    /// </summary>
     public class UnitManager
     {
         private int unitNums;
 
-        private List<Unit.BaseAvator> unitList;
+        private List<BaseAvator> unitList;
 
-        private Unit.BaseAvator playerTower;
+        private BaseAvator playerTower;
 
-        private Unit.BaseAvator enemyTower;
+        private BaseAvator enemyTower;
+
+        private CheckerBoard board;
 
         public UnitManager()
         {
@@ -21,6 +28,20 @@ namespace Battle.Controller
             unitNums = 0;
         }
 
+        public int GetUnitNums()
+        {
+            return unitNums;
+        }
+
+        public void SetBoard(CheckerBoard checkerBoard)
+        {
+            board = checkerBoard;
+        }
+
+        /// <summary>
+        /// ユニット追加
+        /// </summary>
+        /// <param name="unit"></param>
         public void AddUnit(Unit.BaseAvator unit)
         {
             unit.ControlId = unitNums;
@@ -32,13 +53,14 @@ namespace Battle.Controller
             {
                 enemyTower = unit;
             }
-            else
-            {
-                unitList.Add(unit);
-            }
+            unitList.Add(unit);
             unitNums++;
         }
 
+        /// <summary>
+        /// ユニット削除
+        /// </summary>
+        /// <param name="id"></param>
         public void RemoveUnit(int id)
         {
             for(int i = 0; i < unitList.Count;i++)
@@ -51,88 +73,114 @@ namespace Battle.Controller
             }
         }
 
+        /// <summary>
+        /// ユニットの初期化
+        /// </summary>
         public void InitializeUnit()
         {
-            foreach(Unit.BaseAvator unit in unitList)
-            {
-                unit.InitializeUnit(SearchUnit);
-            }
+                SearchUnit();
         }
 
-        public void SearchUnit(int id)
+        /// <summary>
+        /// ユニット検索
+        /// </summary>
+        /// <param name="id"></param>
+        public void SearchUnit()
         {
             for (int i = 0; i < unitList.Count; i++)
             {
-                if(unitList[i].ControlId != id)
+                if(unitList[i].CurrentUnitType == UnitType.playerTower || unitList[i].CurrentUnitType == UnitType.enemyTower)
                 {
                     continue;
                 }
 
-                var target = SearchTarget(unitList[i].ControlId, unitList[i].transform, unitList[i].MaxRenge, unitList[i].CurrentUnitType);
+                var target = SearchTarget(unitList[i]);
 
-                unitList[i].SetMoveTarget(target);
+                var route = board.GetRouteCells(unitList[i],target);
+
+                unitList[i].SetMoveRouteQueue(route);
             }
         }
 
-        public void Search()
+        /// <summary>
+        /// 目標検索
+        /// </summary>
+        /// <param name="controlId"></param>
+        /// <param name="baseTrans"></param>
+        /// <param name="range"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        private BaseAvator SearchTarget(BaseAvator baseUnit)
         {
-            for (int i = 0; i < unitList.Count; i++)
-            {
-                var target = SearchTarget(unitList[i].ControlId, unitList[i].transform, unitList[i].MaxRenge, unitList[i].CurrentUnitType);
+            BaseAvator target = null;
 
-                unitList[i].SetMoveTarget(target);
-            }
-        }
+            var targetDist = baseUnit.MaxRenge;
 
-        private Transform SearchTarget(int controlId, Transform baseTrans,float range, Unit.UnitType type)
-        {
-            Transform target = null;
-
-            float targetDist = range;
+            var basePosX = baseUnit.CurrentX;
+            var basePosY = baseUnit.CurrentY;
 
             foreach (Unit.BaseAvator unit in unitList)
             {
-                if (controlId == unit.ControlId || unit.CurrentUnitType == type)
+                if (baseUnit.ControlId == unit.ControlId || unit.CurrentUnitType == baseUnit.CurrentUnitType)
                 {
                     continue;
                 }
+
+                if(unit.CurrentUnitType == UnitType.playerTower && baseUnit.CurrentUnitType == UnitType.player)
+                {
+                    continue;
+                }
+
+                if (unit.CurrentUnitType == UnitType.enemyTower && baseUnit.CurrentUnitType == UnitType.enemy)
+                {
+                    continue;
+                }
+
                 var pos = unit.transform.localPosition;
-                var basepos = baseTrans.localPosition;
-                float distance = Vector3.Distance(pos, basepos);
+                var distX = unit.CurrentX - basePosX;
+                var distY = unit.CurrentY - basePosY;
+                var distance = Math.Abs(distX)+ Math.Abs(distY);
 
                 if(targetDist > distance)
                 {
-                    target = unit.transform;
+                    target = unit;
                     targetDist = distance;
                 }
             }
 
             if(target == null)
             {
-               target = SetTower(type);
+               target = GetTower(baseUnit.CurrentUnitType);
             }
 
             return target;
         }
 
-
-        private Transform SetTower(Unit.UnitType type)
+        /// <summary>
+        /// タワーのデータ取得
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        private BaseAvator GetTower(Unit.UnitType type)
         {
             switch(type)
             {
                 case Unit.UnitType.player:
                     {
-                        return enemyTower.transform;
+                        return enemyTower;
                     }
                 case Unit.UnitType.enemy:
                     {
-                        return playerTower.transform;
+                        return playerTower;
                     }
                 default:
-                    return playerTower.transform;
+                    return playerTower;
             }
         }
 
+        /// <summary>
+        /// ユニットの更新
+        /// </summary>
         public void UpdateUnit()
         {
             foreach (Unit.BaseAvator unit in unitList)
@@ -141,6 +189,12 @@ namespace Battle.Controller
             }
         }
 
+        /// <summary>
+        /// ユニットの取得
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         public BaseAvator GetUnit(int x, int y)
         {
             foreach (BaseAvator unit in unitList)
@@ -152,6 +206,11 @@ namespace Battle.Controller
             }
 
             return null;
+        }
+
+        public BaseAvator GetUnitFromUnitNum(int num)
+        {
+           return unitList[num];
         }
     }
 }

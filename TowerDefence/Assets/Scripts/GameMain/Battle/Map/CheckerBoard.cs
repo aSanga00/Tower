@@ -5,10 +5,14 @@ using System;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using Battle.Unit;
 
 namespace Battle.Map
 {
 
+    /// <summary>
+    /// マップ情報
+    /// </summary>
     public class CheckerBoard : MonoBehaviour
     {
         [SerializeField] private int Xsize;
@@ -25,6 +29,9 @@ namespace Battle.Map
 
         private Unit.UnitType currentTeam;
 
+        /// <summary>
+        /// マップ情報の初期化
+        /// </summary>
         public void InitializeBoard()
         {
             tempSquares = gameObject.GetComponentsInChildren<CheckerSquare>();
@@ -42,16 +49,35 @@ namespace Battle.Map
             }
         }
 
-        private void Setup()
+        /// <summary>
+        /// マップ情報セットアップ
+        /// </summary>
+        public void Setup(Controller.UnitManager manager)
         {
+            unitManager = manager;
 
+            var nums = unitManager.GetUnitNums();
+
+            for(int i =0; i< nums; i++)
+            {
+                var unit= unitManager.GetUnitFromUnitNum(i);
+
+                foreach(var square in checkerSquares)
+                {
+                    if(square.SetupUnitData(unit.ControlId,unit.CurrentX,unit.CurrentY))
+                    {
+                        break;
+                    }
+                }
+
+            }
         }
 
         /// <summary>
-        /// 指定座標から各マスまで、移動コストいくつで行けるかを計算します
+        /// 指定座標から各マスまでの移動コストの算出
         /// </summary>
-        /// <returns>The move amount to cells.</returns>
-        /// <param name="from">From.</param>
+        /// <param name="from"></param>
+        /// <returns></returns>
         public List<CoordinateAndValue> GetMoveCostToAllSquares(CheckerSquare from)
         {
             var infos = new List<CoordinateAndValue>();
@@ -98,11 +124,11 @@ namespace Battle.Map
         }
 
         /// <summary>
-        /// 指定位置までの移動ルートと移動コストを返します
+        /// 指定位置までの移動ルートと移動コストを計算して返す
         /// </summary>
-        /// <returns>The route coordinates and move amount.</returns>
-        /// <param name="from">From.</param>
-        /// <param name="to">To.</param>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <returns></returns>
         public List<CoordinateAndValue> CalcurateRouteCoordinatesAndMoveAmount(CheckerSquare from, CheckerSquare to)
         {
             var costs = GetMoveCostToAllSquares(from);
@@ -131,11 +157,11 @@ namespace Battle.Map
         }
 
         /// <summary>
-        /// 任意のマスを取得します
+        /// 指定マスの座標を取得
         /// </summary>
-        /// <returns>The cell.</returns>
-        /// <param name="x">The x coordinate.</param>
-        /// <param name="y">The y coordinate.</param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         public CheckerSquare GetSquare(int x, int y)
         {
             return checkerSquares.First(c => c.X == x && c.Y == y);
@@ -143,7 +169,7 @@ namespace Battle.Map
 
 
         /// <summary>
-        /// 目標のマスまでの距離を取得します
+        /// 指定マスまでの距離を算出
         /// </summary>
         /// <param name="baseSquare"></param>
         /// <param name="distanceMin"></param>
@@ -156,26 +182,6 @@ namespace Battle.Map
                 var distance = Math.Abs(baseSquare.X - x.X) + Math.Abs(baseSquare.Y - x.Y);
                 return distanceMin <= distance && distance <= distanceMax;
             }).ToArray();
-        }
-
-        /// <summary>
-        /// 移動可能なマスをハイライトします
-        /// </summary>
-        /// <param name="x">The x coordinate.</param>
-        /// <param name="y">The y coordinate.</param>
-        /// <param name="moveAmount">Move amount.</param>
-        public void HighlightMovableSquares(int x, int y, int moveAmount)
-        {
-            var startSquare = checkerSquares.First(c => c.X == x && c.Y == y);
-            foreach (var info in GetRemainingMoveAmountInfos(startSquare, moveAmount))
-            {
-                var square = checkerSquares.First(c => c.X == info.coordinate.x && c.Y == info.coordinate.y);
-                var unit = unitManager.GetUnit(square.X, square.Y);
-                if (null == unit)
-                {
-                    checkerSquares.First(c => c.X == info.coordinate.x && c.Y == info.coordinate.y).IsMovable = true;
-                }
-            }
         }
 
         /// <summary>
@@ -202,23 +208,6 @@ namespace Battle.Map
         }
 
         /// <summary>
-        /// マスのハイライトを消します
-        /// </summary>
-        public void ClearHighlight()
-        {
-            foreach (var square in checkerSquares)
-            {
-                if (square.IsAttackable)
-                {
-
-                    var unit = unitManager.GetUnit(square.X, square.Y);
-                    unit.GetComponent<Button>().interactable = false;
-                }
-                square.IsMovable = false;
-            }
-        }
-
-        /// <summary>
         /// 移動経路となるマスを返します
         /// </summary>
         /// <returns>The route cells.</returns>
@@ -227,20 +216,26 @@ namespace Battle.Map
         /// <param name="endSquare">End cell.</param>
         public CheckerSquare[] CalculateRouteCells(int x, int y, int moveAmount, CheckerSquare endSquare)
         {
+            //スタート位置の取得
             var startSquare = checkerSquares.First(c => c.X == x && c.Y == y);
+            //移動可能範囲の計算
             var infos = GetRemainingMoveAmountInfos(startSquare, moveAmount);
+            //ゴールの移動可能判定
             if (!infos.Any(info => info.coordinate.x == endSquare.X && info.coordinate.y == endSquare.Y))
             {
                 throw new ArgumentException(string.Format("endCell(x:{0}, y:{1}) is not movable.", endSquare.X, endSquare.Y));
             }
 
             var routeSquares = new List<CheckerSquare>();
+            //ゴール地点の登録
             routeSquares.Add(endSquare);
-            while (true)
+            while (true)//この中のルート検索部分がうまく動いてない模様 7/27
             {
+                //移動範囲内とルートの最新で一致するものを取り出す
                 var currentSquareInfo = infos.First(info => info.coordinate.x == routeSquares[routeSquares.Count - 1].X && info.coordinate.y == routeSquares[routeSquares.Count - 1].Y);
-                var currentSquare = checkerSquares.First(cell => cell.X == currentSquareInfo.coordinate.x && cell.Y == currentSquareInfo.coordinate.y);
-                var previousMoveAmount = currentSquareInfo.value + currentSquare.Cost;
+                //
+                var currentSquare = checkerSquares.First(square => square.X == currentSquareInfo.coordinate.x && square.Y == currentSquareInfo.coordinate.y);
+                var previousMoveAmount = currentSquareInfo.value + currentSquare.Cost +1;
                 var previousSquareInfo = infos.FirstOrDefault(info => (Mathf.Abs(info.coordinate.x - currentSquare.X) + Mathf.Abs(info.coordinate.y - currentSquare.Y)) == 1 && info.value == previousMoveAmount);
                 if (null == previousSquareInfo)
                 {
@@ -253,60 +248,54 @@ namespace Battle.Map
         }
 
         /// <summary>
-        /// 指定座標にユニットを配置します
+        /// 目標に最も近いマスまでのルートを返します
         /// </summary>
-        /// <param name="x">The x coordinate.</param>
-        /// <param name="y">The y coordinate.</param>
-        /// <param name="unitPrefab">Unit prefab.</param>
-        public void PutUnit(int x, int y, Unit.BaseAvator unitPrefab, Unit.UnitType team)
+        /// <param name="unit"></param>
+        /// <param name="target"></param>
+        public CheckerSquare[] GetRouteCells(BaseAvator unit, BaseAvator target)
         {
-            var unit = Instantiate(unitPrefab);
-            unit.CurrentUnitType = team;
-            switch (unit.CurrentUnitType)
-            {
-                case Unit.UnitType.enemy:
-                    // 敵ユニットはちょっと色を変えて反転
-                    var image = unit.GetComponent<Image>();
-                    image.color = new Color(1f, 0.7f, 0.7f);
-                    var scale = image.transform.localScale;
-                    scale.x *= -1f;
-                    image.transform.localScale = scale;
-                    break;
-            }
-            //unit.gameObject.SetActive(true);
-            //unit.transform.SetParent(unitContainer);
-            //unit.transform.position = checkerSquares.First(c => c.X == x && c.Y == y).transform.position;
-            //unit.x = x;
-            //unit.y = y;
-        }
+            var square = GetNearSquare(unit,target);
 
+            return CalculateRouteCells(unit.CurrentX, unit.CurrentY, unit.MovePoint, square);
+         }
+        
         /// <summary>
-        /// ユニットを対象のマスに移動させます
+        /// 目標位置の周囲でもっとも近いマスを取得
         /// </summary>
-        /// <param name="square">Cell.</param>
-        public void MoveTo(Unit.BaseAvator unit, CheckerSquare square)
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <returns></returns>
+        private CheckerSquare GetNearSquare(BaseAvator from, BaseAvator to)
         {
-            ClearHighlight();
-            var routeCells = CalculateRouteCells(unit.CurrentX, unit.CurrentY, unit.MovePoint, square);
-            var sequence = DOTween.Sequence();
-            for (var i = 1; i < routeCells.Length; i++)
-            {
-                var routeCell = routeCells[i];
-                sequence.Append(unit.transform.DOMove(routeCell.transform.position, 0.1f).SetEase(Ease.Linear));
-            }
-            sequence.OnComplete(() =>
-            {
-                unit.CurrentX = routeCells[routeCells.Length - 1].X;
-                unit.CurrentY = routeCells[routeCells.Length - 1].Y;
-                // 攻撃可能範囲のチェック
-                int attackRangeMin = 1;
+            var posx = to.CurrentX;
+            var posy = to.CurrentY;
+            var distX = posx - from.CurrentX;
+            var distY = posy - from.CurrentY;
 
-                var isAttackable = HighlightAttackableCells(unit.CurrentX, unit.CurrentY, attackRangeMin, unit.AttackRange);
-                if (!isAttackable)
+            if(Math.Abs(distX) >= Math.Abs(distY))
+            {
+                if(distX > 0)
                 {
-                    unit.IsMoved = true;
+                    posx -= 1;
                 }
-            });
+                else
+                {
+                    posx += 1;
+                }
+            }
+            else
+            {
+                if (distY > 0)
+                {
+                    posy -= 1;
+                }
+                else
+                {
+                    posy += 1;
+                }
+            }
+
+            return GetSquare(posx,posy);
         }
 
         /// <summary>
@@ -332,7 +321,7 @@ namespace Battle.Map
             for (var i = moveAmount; i >= 0; i--)
             {
                 var appendInfos = new List<CoordinateAndValue>();
-                foreach (var calcTargetInfo in infos.Where(info => info.value == i))
+                foreach (var calcTargetInfo in infos.Where(info => info.value == i)) //コスト計算の部分が不完全なので修正を行う　7/26
                 {
                     // 四方のマスの座標配列を作成
                     var calcTargetCoordinate = calcTargetInfo.coordinate;
@@ -354,7 +343,7 @@ namespace Battle.Map
                             // マップに存在しない、または既に計算済みの座標はスルー
                             continue;
                         }
-                        var remainingMoveAmount = i - targetSquare.Cost;
+                        var remainingMoveAmount = i - 1;
                         appendInfos.Add(new CoordinateAndValue(aroundCellCoordinate.x, aroundCellCoordinate.y, remainingMoveAmount));
                     }
                 }
