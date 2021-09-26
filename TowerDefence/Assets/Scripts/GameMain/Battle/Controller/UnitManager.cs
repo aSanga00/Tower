@@ -45,11 +45,11 @@ namespace Battle.Controller
         public void AddUnit(Unit.BaseAvator unit)
         {
             unit.ControlId = unitNums;
-            if(unit.CurrentUnitType == Unit.UnitType.playerTower)
+            if (unit.CurrentUnitType == Unit.UnitType.playerTower)
             {
                 playerTower = unit;
             }
-            else if(unit.CurrentUnitType == Unit.UnitType.enemyTower)
+            else if (unit.CurrentUnitType == Unit.UnitType.enemyTower)
             {
                 enemyTower = unit;
             }
@@ -63,9 +63,9 @@ namespace Battle.Controller
         /// <param name="id"></param>
         public void RemoveUnit(int id)
         {
-            for(int i = 0; i < unitList.Count;i++)
+            for (int i = 0; i < unitList.Count; i++)
             {
-                if(unitList[i].ControlId == id)
+                if (unitList[i].ControlId == id)
                 {
                     unitList.RemoveAt(i);
                     return;
@@ -78,43 +78,61 @@ namespace Battle.Controller
         /// </summary>
         public void InitializeUnit()
         {
-                SearchUnit();
+            SetAction();
+            SearchUnit();
+        }
+
+        public void SetAction()
+        {
+            for(int i = 0; i< unitList.Count; i++)
+            {
+                unitList[i].SetDamageAction(DamageUnit);
+                unitList[i].SetRootAction(SearchUnit);
+                unitList[i].InitializeUnit();
+            }
         }
 
         /// <summary>
         /// ユニット検索
         /// </summary>
         /// <param name="id"></param>
-        public void SearchUnit()
+        public void SearchUnit(int controlId = -1)
         {
             for (int i = 0; i < unitList.Count; i++)
             {
-                if(unitList[i].CurrentUnitType == UnitType.playerTower || unitList[i].CurrentUnitType == UnitType.enemyTower)
+                if (unitList[i].CurrentUnitType == UnitType.playerTower || unitList[i].CurrentUnitType == UnitType.enemyTower)
+                {
+                    continue;
+                }
+
+                if(controlId != -1 && unitList[i].ControlId != controlId)
                 {
                     continue;
                 }
 
                 var target = SearchTarget(unitList[i]);
 
-                var route = board.GetRouteCells(unitList[i],target);
+                var route = board.GetRouteCells(unitList[i], target);
 
-                unitList[i].SetMoveRouteQueue(route);
+                unitList[i].SetMoveRouteQueue(route, target.ControlId);
+
+                if(unitList[i].ControlId == controlId)
+                {
+                    return;
+                }
             }
         }
 
         /// <summary>
         /// 目標検索
         /// </summary>
-        /// <param name="controlId"></param>
-        /// <param name="baseTrans"></param>
-        /// <param name="range"></param>
-        /// <param name="type"></param>
+        /// <param name="baseUnit"></param>
         /// <returns></returns>
         private BaseAvator SearchTarget(BaseAvator baseUnit)
         {
             BaseAvator target = null;
 
-            var targetDist = baseUnit.MaxRenge;
+            var targetDist = 10;//baseUnit.MaxRenge;
 
             var basePosX = baseUnit.CurrentX;
             var basePosY = baseUnit.CurrentY;
@@ -186,6 +204,17 @@ namespace Battle.Controller
             foreach (Unit.BaseAvator unit in unitList)
             {
                 unit.UpdateAvator();
+            }
+        }
+
+        public void DamageUnit(int hitUnitId, int damage)
+        {
+            foreach (Unit.BaseAvator unit in unitList)
+            {
+                if(unit.ControlId == hitUnitId)
+                {
+                    unit.HitDamage(damage);
+                }
             }
         }
 

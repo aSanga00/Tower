@@ -62,14 +62,31 @@ namespace Battle.Map
             {
                 var unit= unitManager.GetUnitFromUnitNum(i);
 
-                foreach(var square in checkerSquares)
+                UpdateSquarePossesion(unit.ControlId, unit.CurrentX, unit.CurrentY);
+                unit.SetMoveAction(UpdateSquarePossesion);
+            }
+        }
+
+        public void UpdateSquarePossesion(int id, int x, int  y)
+        {
+            var resetFlag = false;
+            var setFlag = false;
+            foreach (var square in checkerSquares)
+            {
+                if(square.ResetUnitData(id, x, y))
                 {
-                    if(square.SetupUnitData(unit.ControlId,unit.CurrentX,unit.CurrentY))
-                    {
-                        break;
-                    }
+                    resetFlag = true;
                 }
 
+                if (square.SetupUnitData(id, x, y))
+                {
+                    setFlag = true;
+                }
+
+                if(resetFlag && setFlag)
+                {
+                    break;
+                }
             }
         }
 
@@ -131,15 +148,18 @@ namespace Battle.Map
         /// <returns></returns>
         public List<CoordinateAndValue> CalcurateRouteCoordinatesAndMoveAmount(CheckerSquare from, CheckerSquare to)
         {
+            //コスト算出
             var costs = GetMoveCostToAllSquares(from);
             if (!costs.Any(info => info.coordinate.x == to.X && info.coordinate.y == to.Y))
             {
+                //移動不可
                 throw new ArgumentException(string.Format("x:{0}, y:{1} is not movable.", to.X, to.Y));
             }
-
+            //ゴール地点の登録
             var toCost = costs.First(info => info.coordinate.x == to.X && info.coordinate.y == to.Y);
             var route = new List<CoordinateAndValue>();
             route.Add(toCost);
+            //スタート地点までのルート検索
             while (true)
             {
                 var currentCost = route.Last();

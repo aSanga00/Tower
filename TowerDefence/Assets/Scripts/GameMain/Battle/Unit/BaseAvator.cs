@@ -40,12 +40,24 @@ namespace Battle.Unit
         private Vector3 targetPosition;
         private Action currentAction;
         private Queue<CheckerSquare> targetQueue = new Queue<CheckerSquare>();
+        private Action<int> RootAction;
+        private Action<int,int> DamageAction;
+        private Action<int, int, int> MoveAction;
+        private int targetID = -1;
 
         public int CurrentX;
 
         public int CurrentY;
 
+        public int NextX;
+
+        public int NextY;
+
         public bool IsMoved;
+
+        private int MoveCount = 0;
+
+        private int UpdateCount = 1;
 
         private float currentCoolTime;
 
@@ -95,29 +107,53 @@ namespace Battle.Unit
             actionType = ActionType.wait;
         }
 
-        public void SetMoveRouteQueue(CheckerSquare[] squares)
+        public void SetMoveRouteQueue(CheckerSquare[] squares,int id)
         {
             targetQueue.Clear();
-            foreach(var square in squares)
+            foreach (var square in squares)
             {
                 targetQueue.Enqueue(square);
             }
-            SetMoveTarget();
+            targetID = id;
+            SetMoveTarget(true);
             PresetMove();
+        }
+
+        public void SetRootAction(Action<int> action)
+        {
+            RootAction = null;
+            RootAction = action;
+        }
+
+        public void SetDamageAction(Action<int,int> action)
+        {
+            DamageAction = null;
+            DamageAction = action;
+        }
+
+        public void SetMoveAction(Action<int,int,int> action)
+        {
+            MoveAction = null;
+            MoveAction = action;
         }
 
         /// <summary>
         /// 移動先の設定
         /// </summary>
         /// <param name="targetTrans"></param>
-        public bool SetMoveTarget()
+        public bool SetMoveTarget(bool isSetTarget = false)
         {
             if (targetQueue.Count > 0)
             {
                 var square = targetQueue.Dequeue();
+                CurrentX = NextX;
+                CurrentY = NextY;
+                NextX = square.X;
+                NextY = square;
                 target = square.transform;
                 targetPosition = target.localPosition;
                 homePosition = transform.localPosition;
+                MoveCount++;
                 return true;
             }
             return false;
@@ -135,9 +171,14 @@ namespace Battle.Unit
         // Use this for initialization
         public void InitializeUnit()
         {
-            targetPosition = target.localPosition;
+            if (target != null)
+            {
+                targetPosition = target.localPosition;
+            }
             homePosition = transform.localPosition;
             currentAction = Wait;
+            NextX = CurrentX;
+            NextY = CurrentY;
         }
 
         
@@ -154,6 +195,11 @@ namespace Battle.Unit
             
         }
 
+        public void HitDamage(int damage)
+        {
+            hp -= damage;
+        }
+
         private void UpdateCoolTime()
         {
             if(actionType == ActionType.wait || actionType == ActionType.attack)
@@ -161,7 +207,7 @@ namespace Battle.Unit
                 currentCoolTime += Time.deltaTime;
             }
 
-            if(currentCoolTime >= coolTime)
+            if(currentCoolTime >= coolTime || actionType == ActionType.move)
             {
                 currentCoolTime = coolTime;
             }
@@ -181,7 +227,7 @@ namespace Battle.Unit
 
         protected virtual void Attack()
         {
-
+ 
         }
 
         protected virtual void Defeat()
@@ -203,9 +249,23 @@ namespace Battle.Unit
             {
                 if(!SetMoveTarget())
                 {
-                    PresetWait();
+                    if (targetID < 0)
+                    {
+                        PresetWait();
+                    }
+                    else
+                    {
+                        PresetAttack();
+                    }
                     return;
                 }
+
+                if(MoveCount > UpdateCount)
+                {
+                    RootAction?.Invoke(controlId);
+                    MoveCount = 0;
+                }
+
             }
             MovePosition();
         }

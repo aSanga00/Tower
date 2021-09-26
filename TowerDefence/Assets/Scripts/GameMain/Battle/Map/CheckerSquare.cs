@@ -58,6 +58,16 @@ namespace Battle.Map
             return false;
         }
 
+        public bool ResetUnitData(int controlId, int x, int y)
+        {
+            if((squarePosX != x || squarePosY != y)&& placementId == controlId)
+            {
+                ResetPlacementId();
+                return true;
+            }
+            return false;
+        }
+
 
         /// <summary>
         /// ユニット情報のセットアップ
@@ -80,7 +90,7 @@ namespace Battle.Map
         /// <summary>
         /// 設定したユニットIDのリセット
         /// </summary>
-        public void ResetPlacementId(int controllId)
+        public void ResetPlacementId()
         {
             placementId = 0;
         }
@@ -88,8 +98,7 @@ namespace Battle.Map
         /// <summary>
         /// 占有IDのリセット
         /// </summary>
-        /// <param name="controllId"></param>
-        public void ResetPossessionId(int controllId)
+        public void ResetPossessionId()
         {
             possessionId = 0;
         }
