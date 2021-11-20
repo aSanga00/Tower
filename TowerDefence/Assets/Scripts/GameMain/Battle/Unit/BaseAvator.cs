@@ -43,7 +43,7 @@ namespace Battle.Unit
         private Action<int> RootAction;
         private Action<int,int> DamageAction;
         private Action<int, int, int> MoveAction;
-        private int targetID = -1;
+        [SerializeField]private int targetID = -1;
 
         public int CurrentX;
 
@@ -149,7 +149,7 @@ namespace Battle.Unit
                 CurrentX = NextX;
                 CurrentY = NextY;
                 NextX = square.X;
-                NextY = square;
+                NextY = square.Y;
                 target = square.transform;
                 targetPosition = target.localPosition;
                 homePosition = transform.localPosition;

@@ -287,8 +287,8 @@ namespace Battle.Map
         /// <returns></returns>
         private CheckerSquare GetNearSquare(BaseAvator from, BaseAvator to)
         {
-            var posx = to.CurrentX;
-            var posy = to.CurrentY;
+            var posx = to.NextX;
+            var posy = to.NextY;
             var distX = posx - from.CurrentX;
             var distY = posy - from.CurrentY;
 
@@ -315,7 +315,47 @@ namespace Battle.Map
                 }
             }
 
+            if(CheckPossession(posx,posy))
+            {
+                posx = to.NextX;
+                posy = to.NextY;
+
+                if (Math.Abs(distY) >= Math.Abs(distX))
+                {
+                    if (distY > 0)
+                    {
+                        posy -= 1;
+                    }
+                    else
+                    {
+                        posy += 1;
+                    }
+                }
+                else
+                {
+                    if (distX > 0)
+                    {
+                        posx -= 1;
+                    }
+                    else
+                    {
+                        posx += 1;
+                    }
+                }
+            }
+
             return GetSquare(posx,posy);
+        }
+
+        private bool CheckPossession(int x, int y)
+        {
+            if(GetSquare(x,y).CheckPossession() )
+            {
+                return false;
+            }
+
+            return true;
+
         }
 
         /// <summary>

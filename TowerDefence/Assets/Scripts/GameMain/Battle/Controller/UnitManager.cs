@@ -132,12 +132,12 @@ namespace Battle.Controller
         {
             BaseAvator target = null;
 
-            var targetDist = 10;//baseUnit.MaxRenge;
+            var targetDist = 10;//baseUnit.MaxRenge //一旦仮で索敵範囲設定
 
-            var basePosX = baseUnit.CurrentX;
+            var basePosX = baseUnit.CurrentX;   //現在位置を初期設定
             var basePosY = baseUnit.CurrentY;
 
-            foreach (Unit.BaseAvator unit in unitList)
+            foreach (Unit.BaseAvator unit in unitList)//リストからユニットを全検索
             {
                 if (baseUnit.ControlId == unit.ControlId || unit.CurrentUnitType == baseUnit.CurrentUnitType)
                 {
@@ -154,11 +154,13 @@ namespace Battle.Controller
                     continue;
                 }
 
+                //目標対象を特定　対象距離を計算
                 var pos = unit.transform.localPosition;
                 var distX = unit.CurrentX - basePosX;
                 var distY = unit.CurrentY - basePosY;
                 var distance = Math.Abs(distX)+ Math.Abs(distY);
 
+                //索敵距離以下なら対象と索敵距離を更新
                 if(targetDist > distance)
                 {
                     target = unit;
@@ -166,7 +168,7 @@ namespace Battle.Controller
                 }
             }
 
-            if(target == null)
+            if(target == null)//対象がいない場合はタワーを対象とする
             {
                target = GetTower(baseUnit.CurrentUnitType);
             }

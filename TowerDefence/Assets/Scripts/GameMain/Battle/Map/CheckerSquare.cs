@@ -103,6 +103,16 @@ namespace Battle.Map
             possessionId = 0;
         }
 
+        public bool CheckPossession()
+        {
+            if(placementId != 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         /// <summary>
         /// ˆÚ“®‰Â”\‚Èƒ}ƒX‚©
         /// </summary>
