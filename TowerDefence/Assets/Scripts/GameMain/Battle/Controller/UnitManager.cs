@@ -114,7 +114,7 @@ namespace Battle.Controller
 
                 var route = board.GetRouteCells(unitList[i], target);
 
-                unitList[i].SetMoveRouteQueue(route, target.ControlId);
+                unitList[i].SetMoveRouteQueue(route, target);
 
                 if(unitList[i].ControlId == controlId)
                 {

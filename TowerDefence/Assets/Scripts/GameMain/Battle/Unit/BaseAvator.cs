@@ -45,6 +45,8 @@ namespace Battle.Unit
         private Action<int, int, int> MoveAction;
         [SerializeField]private int targetID = -1;
 
+        private Vector3 targetUnitPosition;
+
         public int CurrentX;
 
         public int CurrentY;
@@ -107,14 +109,15 @@ namespace Battle.Unit
             actionType = ActionType.wait;
         }
 
-        public void SetMoveRouteQueue(CheckerSquare[] squares,int id)
+        public void SetMoveRouteQueue(CheckerSquare[] squares, BaseAvator baseAvator)
         {
             targetQueue.Clear();
             foreach (var square in squares)
             {
                 targetQueue.Enqueue(square);
             }
-            targetID = id;
+            targetID = baseAvator.ControlId;
+            targetUnitPosition = baseAvator.transform.localPosition;
             SetMoveTarget(true);
             PresetMove();
         }
@@ -192,7 +195,12 @@ namespace Battle.Unit
 
         private void Update()
         {
-            
+            //if (actionType == ActionType.attack)
+            //{
+            //    Quaternion targetRotation = Quaternion.LookRotation(targetUnitPosition - transform.position);
+            //    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
+            //}
+
         }
 
         public void HitDamage(int damage)
@@ -275,6 +283,7 @@ namespace Battle.Unit
             if (currentCoolTime >= coolTime)
             {
                 actionType = ActionType.attack;
+                SetRotation();
                 SetAnimator(actionType);
                 SetAnimatorTrigger(actionType);
             }
@@ -325,6 +334,13 @@ namespace Battle.Unit
                     break;
 
             }
+        }
+
+        private void SetRotation()
+        {
+            var relativePos = targetUnitPosition - transform.position;
+            relativePos.y = 0;
+            transform.rotation = Quaternion.LookRotation(relativePos);
         }
 
         private void SetAnimatorTrigger(ActionType type)
